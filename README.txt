@@ -1,1 +1,0 @@
-Git will be used to deploy code to an online Web hosting service, to submit assignments, to retrieve example code, and to share source code in general.
