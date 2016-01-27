@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Intro to HTML</title>
+    <style>
+        h1 {
+            color: red;
+        }
+
+        h2#introhtml {
+            color: blue;
+            background-color: yellow;
+        }
+
+        .blueFg{
+            color:blue;
+        }
+    </style>
 </head>
 <body>
-
 <header>
-    <h1>Introduction to HTML</h1>
+    <h1 class="blueFg">Introduction to HTML</h1>
 </header>
 
 <nav>
@@ -19,8 +32,8 @@
 </nav>
 
 <section>
-    <h2>Intro to HTML Tags</h2>
-    <p>HTML tags have an opening and a closing tag. Tags are also referred to as HTML elements</p>
+    <h2 id="introhtml">Intro to HTML Tags</h2>
+    <p class="blueFg">HTML tags have an opening and a closing tag. Tags are also referred to as HTML elements</p>
 </section>
 
 <section>
@@ -31,7 +44,7 @@
     </header>
 
     <h3>Ordered Lists</h3>
-    <ol>
+    <ol class="blueFg">
         <li>Course 1</li>
         <li>Course 2</li>
         <li>Course 3</li>
