@@ -110,3 +110,13 @@ body {
 .glyphicon-big {
     font-size: 30px;
 }
+
+/*
+ * Label text alignment
+ */
+.txt-just {
+    text-align:justify !important;
+}
+.txt-left {
+    text-align:left !important;
+}
