@@ -1,0 +1,53 @@
+/*
+ * Font size of glyphicon
+ */
+.glyphicon-big {
+    font-size: 30px;
+}
+
+/*
+ * Label text alignment
+ */
+.txt-just {
+    text-align: justify !important;
+}
+
+.txt-left {
+    text-align: left !important;
+}
+
+/*
+ * Label position
+ */
+.label-pos {
+    margin-bottom: 0px;
+}
+
+/*
+ * Form style
+ */
+.form-style {
+    padding: 20px;
+}
+
+/*
+ * Remove td border
+ */
+.td-border {
+    border: none !important;
+}
+
+/*
+ * Draw a separator line
+ */
+.separator {
+    border-top: 1px solid black !important;
+}
+
+/*
+ * Locate icon at the middle bottom of td
+ */
+.td-mb {
+    text-align: center;
+    padding-top: 35px !important;
+}
