@@ -1,15 +1,29 @@
 (function () {
     angular
+        .module("FormBuilderApp")
         .config(function ($routeProvider) {
             $routeProvider
                 .when("/", {
-                    templateUrl: "home.view.html"
+                    templateUrl: "views/home/home.view.html",
+                    controller: "HomeController"
+                })
+                .when("/register", {
+                    templateUrl: "views/users/register.view.html",
+                    controller: "RegisterController"
+                })
+                .when("/login", {
+                    templateUrl: "views/users/login.view.html",
+                    controller: "LoginController"
                 })
                 .when("/profile", {
-                    templateUrl: "profile.view.html"
+                    templateUrl: "views/users/profile.view.html",
+                    controller: "ProfileController"
                 })
                 .when("/admin", {
-                    templateUrl: "admin.view.html"
+                    templateUrl: "views/admin/admin.view.html"
+                })
+                .when("/forms", {
+                    templateUrl: "views/forms/forms.view.html"
                 })
                 .otherwise({
                     redirectTo: "/"

@@ -1,274 +1,207 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<title ng-model="fieldTitle">Forms</title>
 
-    <title>Forms</title>
+<div ng-model="fieldForm" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1>Forms: Registration Form</h1>
+    <ul class="nav nav-tabs">
+        <li><a href="../forms/forms.view.html">Forms</a></li>
+        <li class="active"><a href="form-fields.view.html">Fields</a></li>
+    </ul>
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../../css/dashboard.css" rel="stylesheet">
-    <link href="../../css/style.css" rel="stylesheet">
-</head>
-
-<body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="../views/home/home.view.html">Assignment1</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Username</a></li>
-                <li><a href="#">Logout</a></li>
-            </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
-        </div>
-    </div>
-</nav>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li><a href="../home/home.view.html">Home</a></li>
-                <li><a href="../users/profile.view.html">Profile</a></li>
-                <li><a href="../admin/admin.view.html">Admin</a></li>
-                <li class="active">
-                    <a href="../forms/forms.view.html">Forms<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1>Forms: Registration Form</h1>
-            <ul class="nav nav-tabs">
-                <li><a href="../forms/forms.view.html">Forms</a></li>
-                <li class="active"><a href="form-fields.view.html">Fields</a></li>
-            </ul>
-
-            <table class="table">
-                <tbody>
-                <tr>
-                    <td class="td-border">
-                        <label for="inputFirstName">First Name:</label>
-                        <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
-                    </td>
-                    <td class="td-border td-mb">
-                        <a class="rm-background" href="form-fields.view.html">
+    <table class="table">
+        <tbody>
+        <tr>
+            <td class="td-border">
+                <label for="inputFirstName">First Name:</label>
+                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+            </td>
+            <td class="td-border td-mb">
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-pencil"
                                   title="Edit Field" aria-label="Edit"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-plus"
                                   title="Clone Field" aria-label="Clone"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-remove"
                                   title="Remove Field" aria-label="Remove"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-align-justify"
                                   title="Reorder Field" aria-label="Reorder"></span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-border">
-                        <label for="inputLastName">Last Name:</label>
-                        <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
-                    </td>
-                    <td class="td-border td-mb">
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="td-border">
+                <label for="inputLastName">Last Name:</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+            </td>
+            <td class="td-border td-mb">
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-pencil"
                                   title="Edit Field" aria-label="Edit"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-plus"
                                   title="Clone Field" aria-label="Clone"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-remove"
                                   title="Remove Field" aria-label="Remove"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-align-justify"
                                   title="Reorder Field" aria-label="Reorder"></span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-border">
-                        <label for="dateOfBirth">Date of Birth:</label>
-                        <input type="date" class="form-control" id="dateOfBirth" placeholder="mm/dd/yyyy">
-                    </td>
-                    <td class="td-border td-mb">
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="td-border">
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" class="form-control" id="dateOfBirth" placeholder="mm/dd/yyyy">
+            </td>
+            <td class="td-border td-mb">
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-pencil"
                                   title="Edit Field" aria-label="Edit"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-plus"
                                   title="Clone Field" aria-label="Clone"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-remove"
                                   title="Remove Field" aria-label="Remove"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-align-justify"
                                   title="Reorder Field" aria-label="Reorder"></span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-border">
-                        <label for="inputGender">Gender:</label>
-                        <select id="inputGender" class="form-control" style="overflow-y: hidden;">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </td>
-                    <td class="td-border td-mb">
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="td-border">
+                <label for="inputGender">Gender:</label>
+                <select id="inputGender" class="form-control" style="overflow-y: hidden;">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </td>
+            <td class="td-border td-mb">
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-pencil"
                                   title="Edit Field" aria-label="Edit"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-plus"
                                   title="Clone Field" aria-label="Clone"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-remove"
                                   title="Remove Field" aria-label="Remove"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-align-justify"
                                   title="Reorder Field" aria-label="Reorder"></span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-border">
-                        <label class="label-pos">Roles:</label>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="inputRole" id="role1" value="Admin" checked>Admin
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="inputRole" id="role2" value="Student">Student
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="inputRole" id="role3" value="User">User
-                            </label>
-                        </div>
-                    </td>
-                    <td class="td-border td-mb">
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="td-border">
+                <label class="label-pos">Roles:</label>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="inputRole" id="role1" value="Admin" checked>Admin
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="inputRole" id="role2" value="Student">Student
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="inputRole" id="role3" value="User">User
+                    </label>
+                </div>
+            </td>
+            <td class="td-border td-mb">
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-pencil"
                                   title="Edit Field" aria-label="Edit"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-plus"
                                   title="Clone Field" aria-label="Clone"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-remove"
                                   title="Remove Field" aria-label="Remove"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-align-justify"
                                   title="Reorder Field" aria-label="Reorder"></span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-border">
-                        <label class="label-pos">License Agreement:</label>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="inputRole" id="license1" value="Yes" checked>Yes
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="inputRole" id="license2" value="No">No
-                            </label>
-                        </div>
-                    </td>
-                    <td class="td-border td-mb">
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="td-border">
+                <label class="label-pos">License Agreement:</label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="inputRole" id="license1" value="Yes" checked>Yes
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="inputRole" id="license2" value="No">No
+                    </label>
+                </div>
+            </td>
+            <td class="td-border td-mb">
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-pencil"
                                   title="Edit Field" aria-label="Edit"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-plus"
                                   title="Clone Field" aria-label="Clone"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-remove"
                                   title="Remove Field" aria-label="Remove"></span>
-                        </a>
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-align-justify"
                                   title="Reorder Field" aria-label="Reorder"></span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="separator"></td>
-                    <td class="separator"></td>
-                </tr>
-                <tr>
-                    <td class="td-border">
-                        <label for="inputNewField">Add New Field:</label>
-                        <select class="form-control" id="inputNewField">
-                            <option value="single">Single Line Text</option>
-                            <option value="date">Date</option>
-                            <option value="dropdown">Dropdown</option>
-                            <option value="checkbox">Checkboxes</option>
-                            <option value="radio">Radio Buttons</option>
-                            <option value="paragraph">Paragraph Text Field</option>
-                        </select>
-                    </td>
-                    <td class="td-border td-mb">
-                        <a class="rm-background" href="form-fields.view.html">
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="separator"></td>
+            <td class="separator"></td>
+        </tr>
+        <tr>
+            <td class="td-border">
+                <label for="inputNewField">Add New Field:</label>
+                <select class="form-control" id="inputNewField">
+                    <option value="single">Single Line Text</option>
+                    <option value="date">Date</option>
+                    <option value="dropdown">Dropdown</option>
+                    <option value="checkbox">Checkboxes</option>
+                    <option value="radio">Radio Buttons</option>
+                    <option value="paragraph">Paragraph Text Field</option>
+                </select>
+            </td>
+            <td class="td-border td-mb">
+                <a class="rm-background" href="form-fields.view.html">
                             <span class="glyphicon glyphicon-big glyphicon-plus"
                                   title="Add Field" aria-label="Add"></span>
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</body>
-</html>
