@@ -7,12 +7,19 @@
         $rootScope.register = register;
 
         function register(user) {
-            $location.url("/profile/"+user.username);
             var newUser = {
+                _id: (new Date).getTime(),
+                firstName: null,
+                lastName: null,
                 username: user.username,
                 password: user.password,
-                email: user.email
+                email: user.email,
+                roles: []
             };
+
+            $rootScope.user = newUser;
+            $location.url("/profile/"+newUser._id);
+
             UserService.createUser(
                 newUser,
                 function (response) {

@@ -23,7 +23,7 @@
             {
                 "_id": 567, "firstName": "Edward", "lastName": "Norton",
                 "username": "ed", "password": "ed", "roles": ["student"]
-            }]
+            }];
 
         var api = {
             findUserByCredentials: findUserByCredentials,
@@ -57,15 +57,16 @@
                 lastName: user.lastName,
                 username: user.username,
                 password: user.password,
+                email: user.email,
                 roles: user.roles
-            }
+            };
             users.push(newuser);
             callback(newuser);
         }
 
         function deleteUser(userId, callback) {
-            for(var i in users){
-                if(users[i]._id==userId){
+            for (var i in users) {
+                if (users[i]._id == userId) {
                     users.splice(i, 1);
                     break;
                 }
@@ -74,14 +75,16 @@
         }
 
         function updateUser(userId, user, callback) {
-            for(var i in users){
-                if(users[i]._id==userId){
+            for (var i in users) {
+                if (users[i]._id == userId) {
                     users[i] = user;
                     callback(users[i]);
+                    break;
                 }
             }
+            console.log(users);
 
         }
 
     }
-})
+})();
