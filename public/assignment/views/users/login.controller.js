@@ -3,16 +3,18 @@
         .module("FormBuilderApp")
         .controller("LoginController", LoginController);
 
-    function LoginController($rootScope, UserService) {
+    function LoginController($rootScope, $location, UserService) {
         $rootScope.login = login;
-        var user = $rootScope.user;
 
-        $location.url("/profile/"+user.username);
-        UserService.findUserByCredentials(
-            user.username,
-            user.password,
-            function (response) {
-                $rootScope.user = response;
-            });
+        function login(user) {
+
+            UserService.findUserByCredentials(
+                user.username,
+                user.password,
+                function (response) {
+                    $rootScope.user = response;
+                    $location.url("/profile/" + response._id);
+                });
+        }
     }
 })();

@@ -40,10 +40,10 @@
             for (var i in users) {
                 if (users[i].username == username && users[i].password == password) {
                     user = users[i];
-                    callback(user);
+                    break;
                 }
             }
-            callback(null);
+            callback(user);
         }
 
         function findAllUsers(callback) {
