@@ -3,7 +3,7 @@
         <li ng-class="{'active' : $location.url()=='/'}">
             <a href="#/home">Home</a>
         </li>
-        <li ng-class="{'active' : $location.url()=='/profile'}">
+        <li ng-class="{'active' : $location.url()=='/profile/'+user._id}">
             <a href="#/profile">Profile</a>
         </li>
         <li ng-class="{'active' : $location.url()=='/admin'}">

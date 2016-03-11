@@ -4,29 +4,32 @@
         .controller("FormController", FormController);
 
     function FormController($rootScope, FormService) {
-        var currentForms;
-        console.log($rootScope.user._id);
         var userId = $rootScope.user._id;
         FormService.findAllFormsForUser(
             userId,
             function (response) {
-                currentForms = response;
+                $rootScope.foundForms = response;
             });
 
         $rootScope.addForm = addForm;
         $rootScope.updateForm = updateForm;
         $rootScope.deleteForm = deleteForm;
         $rootScope.selectForm = selectForm;
+        $rootScope.form = {
+            _id: null,
+            title: null,
+            userId: userId
+        }
 
         var selectedFormIndex = -1;
 
         function selectForm(form) {
-            selectedFormIndex = $rootScope.forms.indexOf(form);
+            selectedFormIndex = $rootScope.foundForms.indexOf(form);
             $rootScope.form = {
                 _id: form._id,
                 title: form.title,
                 userId: form.userId
-            }
+            };
         }
 
         function addForm(form) {
@@ -35,34 +38,42 @@
                 title: form.title,
                 userId: userId
             };
-
             FormService.createFormForUser(
                 userId,
-                form,
+                newForm,
                 function (response) {
-                    currentForms.push(response);
+                    $rootScope.foundForms.push(response);
+                    $rootScope.form = {};
                 });
         }
 
         function updateForm(form) {
             if (selectedFormIndex >= 0) {
+                var newForm = {
+                    _id: $rootScope.form._id,
+                    title: form.title,
+                    userId: userId
+                }
                 FormService.updateFormById(
-                    currentForms[selectedFormIndex]._id,
-                    form,
+                    newForm._id,
+                    newForm,
                     function (response) {
-                        currentForms[selectedFormIndex] = response;
+                        $rootScope.foundForms[selectedFormIndex] = response;
+                        $rootScope.form = {};
                     })
             }
         }
 
-        function deleteForm(formId) {
-            if (selectedFormIndex >= 0) {
-                FormService.deleteFormById(
-                    formId,
-                    function (response) {
-                        currentForms.splice(selectedFormIndex, 1);
-                    })
-            }
+        function deleteForm(form) {
+            var formId = form._id;
+            FormService.deleteFormById(
+                formId,
+                function (response) {
+                    $rootScope.foundForms = response;
+                    $rootScope.form = {};
+                })
         }
     }
-})();
+
+})
+();

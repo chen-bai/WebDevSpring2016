@@ -22,7 +22,9 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input ng-model="form.title" type="text" placeholder="name" class="form-control"/></td>
+                    <td>
+                        <input ng-model="form.title" ng-value="form.title" type="text" placeholder="name" class="form-control"/>
+                    </td>
                     <td align="center" class="nowrap">
                         <a class="rm-background">
                                     <span class="glyphicon glyphicon-big glyphicon-plus"
@@ -34,18 +36,18 @@
                         </a>
                     </td>
                 </tr>
-                <tr ng-repeat="f in currentForms">
+                <tr ng-repeat="currentForm in foundForms">
                     <td>
-                        <a href="#/form-fields/{{f._id}}" class="rm-ul">{{f.title}}</a>
+                        <a href="#/form-fields/{{currentForm._id}}" class="rm-ul">{{currentForm.title}}</a>
                     </td>
                     <td align="center" class="nowrap">
                         <a class="rm-background">
                                     <span class="glyphicon glyphicon-big glyphicon-remove"
-                                          ng-click="deleteForm($index)" title="Delete Form" aria-label="Remove"></span>
+                                          ng-click="deleteForm(currentForm)" title="Delete Form" aria-label="Remove"></span>
                         </a>
                         <a class="rm-background">
                                     <span class="glyphicon glyphicon-big glyphicon-pencil"
-                                          ng-click="selectForm($index)" title="Edit Form" aria-label="Edit"></span>
+                                          ng-click="selectForm(currentForm)" title="Select Form" aria-label="Select"></span>
                         </a>
                     </td>
                 </tr>

@@ -9,6 +9,7 @@
             {"_id": "010", "title": "ToDo",     "userId": 123},
             {"_id": "020", "title": "CDs",      "userId": 234}
         ];
+        var foundForms = [];
 
         var api = {
             createFormForUser: createFormForUser,
@@ -20,7 +21,6 @@
         return api;
 
         function findAllFormsForUser(userId, callback) {
-            var foundForms = [];
             for(var i in forms){
                 if(userId == forms[i].userId){
                     foundForms.push(forms[i]);
@@ -46,7 +46,13 @@
                     break;
                 }
             }
-            callback(forms);
+            for (var i in foundForms) {
+                if (foundForms[i]._id == formId) {
+                    foundForms.splice(i, 1);
+                    break;
+                }
+            }
+            callback(foundForms);
         }
 
         function updateFormById(formId, newForm, callback) {
