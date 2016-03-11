@@ -1,3 +1,7 @@
-/**
- * Created by chenbai on 2/16/16.
- */
+(function(){
+    angular
+        .module("FormBuilderApp")
+        .controller("AdminController", AdminController);
+
+    function AdminController(){}
+})();

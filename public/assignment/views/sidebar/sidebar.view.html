@@ -1,16 +1,16 @@
-<div class="col-sm-3 col-md-2 sidebar">
+<div ng-controller="SidebarController" class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar">
         <li ng-class="{'active' : $location.url()=='/'}">
             <a href="#/home">Home</a>
         </li>
-        <li ng-class="{'active' : $location.url()=='/profile/'+user._id}">
-            <a href="#/profile">Profile</a>
+        <li ng-class="{'active' : $location.url()=='/profile/'+user._id}" ng-show="user.username">
+            <a href="#/profile/{{user._id}}">Profile</a>
         </li>
-        <li ng-class="{'active' : $location.url()=='/admin'}">
-            <a href="#/admin">Admin</a>
+        <li ng-class="{'active' : $location.url()=='/admin/'+user._id}" ng-show="user.roles.indexOf('admin')>=0">
+            <a href="#/admin/{{user._id}}">Admin</a>
         </li>
-        <li ng-class="{'active' : $location.url()=='/forms'}">
-            <a href="#/forms">Forms</a>
+        <li ng-class="{'active' : $location.url()=='/forms/'+user._id}" ng-show="user.username">
+            <a href="#/forms/{{user._id}}">Forms</a>
         </li>
     </ul>
 </div>

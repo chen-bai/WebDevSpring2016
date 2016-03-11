@@ -23,8 +23,9 @@
 
         var selectedFormIndex = -1;
 
-        function selectForm(form) {
-            selectedFormIndex = $rootScope.foundForms.indexOf(form);
+        function selectForm(index) {
+            selectedFormIndex = index;
+            var form = $rootScope.foundForms[index];
             $rootScope.form = {
                 _id: form._id,
                 title: form.title,
@@ -64,8 +65,8 @@
             }
         }
 
-        function deleteForm(form) {
-            var formId = form._id;
+        function deleteForm(index) {
+            var formId = $rootScope.foundForms[index]._id;
             FormService.deleteFormById(
                 formId,
                 function (response) {

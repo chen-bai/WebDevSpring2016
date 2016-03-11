@@ -5,11 +5,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/register">Register</a></li>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/admin">Admin</a></li>
-                <li><a href="#/profile">Username</a></li>
-                <li><a href="#/home">Logout</a></li>
+                <li ng-hide="user.username">
+                    <a href="#/register">Register</a>
+                </li>
+                <li ng-hide="user.username">
+                    <a href="#/login">Login</a>
+                </li>
+                <li ng-show="user.roles.indexOf('admin')>=0">
+                    <a href="#/admin/{{user._id}}">Admin</a>
+                </li>
+                <li ng-show="user.username">
+                    <a href="#/profile/{{user._id}}" ng-click="showUser()">
+                        {{user.username}}
+                    </a>
+                </li>
+                <li ng-show="user.username">
+                    <a href="#/home" ng-click="logout()">Logout</a>
+                </li>
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="Search...">

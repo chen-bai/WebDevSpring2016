@@ -3,8 +3,8 @@
 <div ng-model="formsForm" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1>Forms</h1>
     <ul class="nav nav-tabs">
-        <li class="active"><a href="forms.view.html">Forms</a></li>
-        <li><a href="form-fields.view.html">Fields</a></li>
+        <li class="active"><a href="#/forms/{{user._id}}">Forms</a></li>
+        <li><a href="#/form-fields/{{user._id}}">Fields</a></li>
     </ul>
 
     <div class="tab-content">
@@ -43,11 +43,11 @@
                     <td align="center" class="nowrap">
                         <a class="rm-background">
                                     <span class="glyphicon glyphicon-big glyphicon-remove"
-                                          ng-click="deleteForm(currentForm)" title="Delete Form" aria-label="Remove"></span>
+                                          ng-click="deleteForm($index)" title="Delete Form" aria-label="Remove"></span>
                         </a>
                         <a class="rm-background">
                                     <span class="glyphicon glyphicon-big glyphicon-pencil"
-                                          ng-click="selectForm(currentForm)" title="Select Form" aria-label="Select"></span>
+                                          ng-click="selectForm($index)" title="Select Form" aria-label="Select"></span>
                         </a>
                     </td>
                 </tr>

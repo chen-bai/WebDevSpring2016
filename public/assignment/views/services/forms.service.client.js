@@ -9,7 +9,7 @@
             {"_id": "010", "title": "ToDo",     "userId": 123},
             {"_id": "020", "title": "CDs",      "userId": 234}
         ];
-        var foundForms = [];
+        var foundForms;
 
         var api = {
             createFormForUser: createFormForUser,
@@ -21,6 +21,7 @@
         return api;
 
         function findAllFormsForUser(userId, callback) {
+            foundForms = [];
             for(var i in forms){
                 if(userId == forms[i].userId){
                     foundForms.push(forms[i]);

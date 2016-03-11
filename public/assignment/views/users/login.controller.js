@@ -7,7 +7,6 @@
         $rootScope.login = login;
 
         function login(user) {
-
             UserService.findUserByCredentials(
                 user.username,
                 user.password,
