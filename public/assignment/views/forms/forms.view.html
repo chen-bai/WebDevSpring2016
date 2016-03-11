@@ -22,60 +22,30 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input type="text" placeholder="name" class="form-control"/></td>
-                    <td align="center">
-                        <a class="rm-background" href="forms.view.html">
+                    <td><input ng-model="form.title" type="text" placeholder="name" class="form-control"/></td>
+                    <td align="center" class="nowrap">
+                        <a class="rm-background">
                                     <span class="glyphicon glyphicon-big glyphicon-plus"
-                                          title="Add Form" aria-label="Add"></span>
+                                          ng-click="addForm(form)" title="Add Form" aria-label="Add"></span>
                         </a>
-                        <a class="rm-background" href="forms.view.html">
+                        <a class="rm-background">
                                     <span class="glyphicon glyphicon-big glyphicon-ok"
-                                          title="Update Form" aria-label="Update"></span>
+                                          ng-click="updateForm(form)" title="Update Form" aria-label="Update"></span>
                         </a>
                     </td>
                 </tr>
-                <tr>
+                <tr ng-repeat="f in currentForms">
                     <td>
-                        <a href="form-fields.view.html" class="rm-ul">Registration Form</a>
+                        <a href="#/form-fields/{{f._id}}" class="rm-ul">{{f.title}}</a>
                     </td>
-                    <td align="center">
-                        <a class="rm-background" href="forms.view.html">
+                    <td align="center" class="nowrap">
+                        <a class="rm-background">
                                     <span class="glyphicon glyphicon-big glyphicon-remove"
-                                          title="Delete Form" aria-label="Remove"></span>
+                                          ng-click="deleteForm($index)" title="Delete Form" aria-label="Remove"></span>
                         </a>
-                        <a class="rm-background" href="forms.view.html">
+                        <a class="rm-background">
                                     <span class="glyphicon glyphicon-big glyphicon-pencil"
-                                          title="Edit Form" aria-label="Edit"></span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="form-fields.view.html" class="rm-ul">Contact List</a>
-                    </td>
-                    <td align="center">
-                        <a class="rm-background" href="forms.view.html">
-                                    <span class="glyphicon glyphicon-big glyphicon-remove"
-                                          title="Delete Form" aria-label="Remove"></span>
-                        </a>
-                        <a class="rm-background" href="forms.view.html">
-                                    <span class="glyphicon glyphicon-big glyphicon-pencil"
-                                          title="Edit Form" aria-label="Edit"></span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="form-fields.view.html" class="rm-ul">To Do List</a>
-                    </td>
-                    <td align="center">
-                        <a class="rm-background" href="forms.view.html">
-                                    <span class="glyphicon glyphicon-big glyphicon-remove"
-                                          title="Delete Form" aria-label="Remove"></span>
-                        </a>
-                        <a class="rm-background" href="forms.view.html">
-                                    <span class="glyphicon glyphicon-big glyphicon-pencil"
-                                          title="Edit Form" aria-label="Edit"></span>
+                                          ng-click="selectForm($index)" title="Edit Form" aria-label="Edit"></span>
                         </a>
                     </td>
                 </tr>

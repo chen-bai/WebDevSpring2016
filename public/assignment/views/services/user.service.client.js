@@ -82,9 +82,6 @@
                     break;
                 }
             }
-            console.log(users);
-
         }
-
     }
 })();

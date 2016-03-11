@@ -19,11 +19,16 @@
                     templateUrl: "views/users/profile.view.html",
                     controller: "ProfileController"
                 })
+                .when("/form-fields/:_id", {
+                    templateUrl: "views/forms/form-fields.view.html",
+                    controller: "FieldsController"
+                })
                 .when("/admin", {
                     templateUrl: "views/admin/admin.view.html"
                 })
                 .when("/forms", {
-                    templateUrl: "views/forms/forms.view.html"
+                    templateUrl: "views/forms/forms.view.html",
+                    controller: "FormController"
                 })
                 .otherwise({
                     redirectTo: "/"
