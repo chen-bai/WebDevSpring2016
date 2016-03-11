@@ -1,83 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Intro to HTML</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
     <style>
-        h1 {
-            color: red;
-        }
-
-        h2#introhtml {
-            color: blue;
-            background-color: yellow;
-        }
-
-        .blueFg{
-            color:blue;
-        }
     </style>
 </head>
-<body>
-<header>
-    <h1 class="blueFg">Introduction to HTML</h1>
-</header>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="users.html">Users</a></li>
-    </ul>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
 </nav>
 
-<section>
-    <h2 id="introhtml">Intro to HTML Tags</h2>
-    <p class="blueFg">HTML tags have an opening and a closing tag. Tags are also referred to as HTML elements</p>
-</section>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Export</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-<section>
-    <header>
-        <h2>List Elements</h2>
-        <a>ordered</a>
-        <a>unordered</a>
-    </header>
+            <h1>Welcome</h1>
 
-    <h3>Ordered Lists</h3>
-    <ol class="blueFg">
-        <li>Course 1</li>
-        <li>Course 2</li>
-        <li>Course 3</li>
-    </ol>
-    <h3>Unordered Lists</h3>
-    <ul>
-        <li>Java</li>
-        <li>C#</li>
-        <li>HTML</li>
-    </ul>
-</section>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
 
-<h2>Tabular Data</h2>
-<table>
-    <thead>
-    <th>Last Name</th>
-    <th>First Name</th>
-    </thead>
-    <tbody>
-    <tr>
-        <td>Wonderland</td>
-        <td>Alice</td>
-    </tr>
-    <tr>
-        <td>Marley</td>
-        <td>Bob</td>
-    </tr>
-    <tr>
-        <td>Garcia</td>
-        <td>Charlie</td>
-    </tr>
-    </tbody>
-</table>
-<footer>Copyright (c) 2015</footer>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Date of Birth</th>
+                        <th>Date of Hire</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Alice</td>
+                        <td>Wonderland</td>
+                        <td>alice</td>
+                        <td>factulty</td>
+                        <td>1/1/1998</td>
+                        <td>1/1/2011</td>
+                    </tr>
+                    <tr>
+                        <td>Alice</td>
+                        <td>Wonderland</td>
+                        <td>alice</td>
+                        <td>factulty</td>
+                        <td>1/1/1998</td>
+                        <td>1/1/2011</td>
+                    </tr>
+                    <tr>
+                        <td>Alice</td>
+                        <td>Wonderland</td>
+                        <td>alice</td>
+                        <td>factulty</td>
+                        <td>1/1/1998</td>
+                        <td>1/1/2011</td>
+                    </tr>
+                    <tr>
+                        <td>Alice</td>
+                        <td>Wonderland</td>
+                        <td>alice</td>
+                        <td>factulty</td>
+                        <td>1/1/1998</td>
+                        <td>1/1/2011</td>
+                    </tr>
+                    <tr>
+                        <td>Alice</td>
+                        <td>Wonderland</td>
+                        <td>alice</td>
+                        <td>factulty</td>
+                        <td>1/1/1998</td>
+                        <td>1/1/2011</td>
+                    </tr>
+                    <tr>
+                        <td>Alice</td>
+                        <td>Wonderland</td>
+                        <td>alice</td>
+                        <td>factulty</td>
+                        <td>1/1/1998</td>
+                        <td>1/1/2011</td>
+                    </tr>
+                    <tr>
+                        <td>Alice</td>
+                        <td>Wonderland</td>
+                        <td>alice</td>
+                        <td>factulty</td>
+                        <td>1/1/1998</td>
+                        <td>1/1/2011</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
