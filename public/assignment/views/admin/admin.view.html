@@ -1,6 +1,5 @@
 <title ng-model="adminTitle">Admin</title>
 
-
 <div ng-model="adminForm" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1>Admin</h1>
     <h3>Users</h3>
@@ -15,62 +14,45 @@
             </thead>
             <tbody>
             <tr>
-                <td><input type="text" placeholder="username" class="form-control"/></td>
-                <td><input type="password" placeholder="password" class="form-control"/></td>
-                <td><input type="text" placeholder="role1, role2" class="form-control"/></td>
+                <td>
+                    <input ng-model="account.username" type="text" placeholder="username" class="form-control"/>
+                </td>
+                <td>
+                    <input ng-model="account.password" type="password" placeholder="password" class="form-control"/>
+                </td>
+                <td>
+                    <input ng-model="account.roles" type="text" placeholder="role1, role2" class="form-control"/>
+                </td>
                 <td align="center">
-                    <a class="rm-background" href="admin.view.html">
+                    <a class="rm-background" ng-click="adminAddAccount(account)">
                                 <span class="glyphicon glyphicon-big glyphicon-plus"
                                       title="Add User" aria-label="Add"></span>
                     </a>
-                    <a class="rm-background" href="admin.view.html">
+                    <a class="rm-background" ng-click="adminUpdateAccount(account)">
                                 <span class="glyphicon glyphicon-big glyphicon-ok"
                                       title="Update User" aria-label="Update"></span>
                     </a>
                 </td>
             </tr>
-            <tr>
-                <td>alice</td>
-                <td></td>
-                <td>student</td>
-                <td align="center">
-                    <a class="rm-background" href="admin.view.html">
-                                <span class="glyphicon glyphicon-big glyphicon-remove"
-                                      title="Remove User" aria-label="Remove"></span>
-                    </a>
-                    <a class="rm-background" href="admin.view.html">
-                                <span class="glyphicon glyphicon-big glyphicon-pencil"
-                                      title="Edit User" aria-label="Edit"></span>
-                    </a>
+            <tr ng-repeat="currentUser in users">
+                <td>{{currentUser.username}}</td>
+                <td>{{currentUser.password}}</td>
+                <td>
+                    <span ng-repeat="role in currentUser.roles" ng-if="$index+1<currentUser.roles.length">
+                        {{role}} |
+                    </span>
+                    <span>
+                        {{currentUser.roles[currentUser.roles.length-1]}}
+                    </span>
                 </td>
-            </tr>
-            <tr>
-                <td>bob</td>
-                <td></td>
-                <td>faculty | admin</td>
                 <td align="center">
-                    <a class="rm-background" href="admin.view.html">
+                    <a class="rm-background" ng-click="adminRemoveAccount($index)">
                                 <span class="glyphicon glyphicon-big glyphicon-remove"
                                       title="Remove User" aria-label="Remove"></span>
                     </a>
-                    <a class="rm-background" href="admin.view.html">
+                    <a class="rm-background" ng-click="adminSelectAccount($index)">
                                 <span class="glyphicon glyphicon-big glyphicon-pencil"
-                                      title="Edit User" aria-label="Edit"></span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>charlie</td>
-                <td></td>
-                <td></td>
-                <td align="center">
-                    <a class="rm-background" href="admin.view.html">
-                                <span class="glyphicon glyphicon-big glyphicon-remove"
-                                      title="Remove User" aria-label="Remove"></span>
-                    </a>
-                    <a class="rm-background" href="admin.view.html">
-                                <span class="glyphicon glyphicon-big glyphicon-pencil"
-                                      title="Edit User" aria-label="Edit"></span>
+                                      title="Select User" aria-label="Select"></span>
                     </a>
                 </td>
             </tr>

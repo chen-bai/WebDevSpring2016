@@ -23,6 +23,7 @@
             UserService.createUser(
                 newUser,
                 function (response) {
+                    $rootScope.users.push(response);
                     $rootScope.user = response;
                 });
         }

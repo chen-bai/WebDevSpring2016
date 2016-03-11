@@ -60,7 +60,6 @@
                 email: user.email,
                 roles: user.roles
             };
-            users.push(newuser);
             callback(newuser);
         }
 
