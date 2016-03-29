@@ -48,13 +48,10 @@
     color: white;
 }
 
+
 /*
  * Project Button
  */
 @media (min-width: 768px) {
-    .btn.btn-lg.btn-project {
-        background-color: orange;
-        color: white;
-        padding: 10px;
-    }
+
 }
