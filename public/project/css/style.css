@@ -1,0 +1,60 @@
+/*
+ * Logo Size
+ */
+.logo-size {
+    width: 200px;
+}
+
+/*
+ * Remove brand top and bottom padding
+ */
+.brand {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/*
+ * Add padding top on nav
+ */
+.nav-lower {
+    padding-top: 15px;
+}
+
+/*
+ * Slogan Format
+ */
+.slogan {
+    font-size: 4em;
+}
+
+/*
+ * Resize slogan
+ */
+@media only screen and (max-width: 768px) {
+    .font-1 {
+        font-size: 30px;
+    }
+}
+
+/*
+ * New button
+ */
+.btn-new {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    width: 180px;
+    background-color: transparent;
+    color: white;
+}
+
+/*
+ * Project Button
+ */
+@media (min-width: 768px) {
+    .btn.btn-lg.btn-project {
+        background-color: orange;
+        color: white;
+        padding: 10px;
+    }
+}

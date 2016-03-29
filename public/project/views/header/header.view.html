@@ -1,0 +1,21 @@
+<div class="masthead clearfix" ng-controller="HeaderController">
+    <div class="inner">
+        <img class="masthead-brand logo-size" ng-src="{{imageSource}}">
+        <nav class="nav-lower">
+            <ul class="nav masthead-nav">
+                <li ng-hide="user.username">
+                    <a href="#/login">Login</a>
+                </li>
+                <li ng-hide="user.username">
+                    <a href="#/signup">Sign Up</a>
+                </li>
+                <li ng-show="user.username">
+                    <a href="#/home" ng-click="logout()">Logout</a>
+                </li>
+                <li>
+                    <a href="#/login" class="btn btn-lg btn-project">Post a Project</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
