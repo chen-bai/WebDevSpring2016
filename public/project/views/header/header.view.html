@@ -4,16 +4,16 @@
         <nav class="nav-lower">
             <ul class="nav masthead-nav">
                 <li ng-hide="user.username">
-                    <a href="#/login">Login</a>
+                    <a href="#/login" ng-style="{'color': txtColor}">Login</a>
                 </li>
                 <li ng-hide="user.username">
-                    <a href="#/signup">Sign Up</a>
+                    <a href="#/signup" ng-style="{'color': txtColor}">Sign Up</a>
                 </li>
                 <li ng-show="user.username">
-                    <a href="#/home" ng-click="logout()">Logout</a>
+                    <a href="#/home" ng-style="{'color': txtColor}" ng-click="logout()">Logout</a>
                 </li>
                 <li>
-                    <a href="#/login">Post a Project</a>
+                    <a href="#/login" ng-style="{'color': txtColor}">Post a Project</a>
                 </li>
             </ul>
             <!--<form class="navbar-form search" id="searce" role="search">-->

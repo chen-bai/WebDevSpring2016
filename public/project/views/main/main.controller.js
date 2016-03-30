@@ -5,6 +5,23 @@
 
     function MainController($scope, $location) {
         $scope.$location = $location;
-        $scope.backgroundSource = 'img/cool-background.jpg';
+        $scope.getImage = getImage;
+        $scope.getColor = getColor;
+
+        function getImage(){
+            if($location.$$url=="/"){
+                return 'url(img/cool-background.jpg)';
+            }else{
+                return 'none';
+            }
+        }
+
+        function getColor(){
+            if($location.$$url=="/"){
+                return '#333';
+            }else{
+                return '#eee';
+            }
+        }
     }
 })();

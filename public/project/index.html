@@ -15,6 +15,7 @@
     <script src="config.js"></script>
     <script src="views/header/header.controller.js"></script>
     <script src="views/home/home.controller.js"></script>
+    <script src="views/users/login.controller.js"></script>
     <script src="views/main/main.controller.js"></script>
 
     <!-- Bootstrap core CSS -->
@@ -24,7 +25,7 @@
     <link href="css/cover.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body ng-controller="MainController">
+<body ng-controller="MainController" ng-style="{'background-color': getColor(), 'background-image': getImage()}">
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
         <div class="cover-container">

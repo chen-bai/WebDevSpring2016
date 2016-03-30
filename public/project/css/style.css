@@ -48,10 +48,55 @@
     color: white;
 }
 
+/*
+ * Sets base style for each page
+ */
+html,
+body {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url(../img/cool-background.jpg);
+}
 
 /*
- * Project Button
+ * Label text alignment
+ */
+.label-black {
+    color: #666666;
+}
+
+/*
+ * Checkbox alignment
  */
 @media (min-width: 768px) {
+    .ckb-left {
+        text-align: left;
+    }
+}
 
+/*
+ * Draw a separator line
+ */
+.separator {
+    margin-top: 20px;
+    border-top: 1px solid #cccccc !important;
+}
+
+/*
+ * Font
+ */
+.font-black {
+    color: #666666;
+    font-weight: 400;
+    font-size: small;
+    margin-right: 10px;
+}
+
+.font-blue {
+    color: dodgerblue;
+    font-weight: 400;
+    font-size: small;
+    margin-left: 10 px;
 }
