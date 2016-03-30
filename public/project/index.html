@@ -27,8 +27,8 @@
     <link href="css/cover.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body ng-controller="MainController" ng-style="{'background-color': getColor(), 'background-image': getImage()}">
-<div class="site-wrapper">
+<body ng-controller="MainController">
+<div class="site-wrapper" ng-style="{'background-color': getColor(), 'background-image': getImage()}">
     <div class="site-wrapper-inner">
         <div class="cover-container">
             <div ng-include="'views/header/header.view.html'"></div>
