@@ -8,6 +8,7 @@
         $scope.getImage = getImage;
         $scope.getColor = getColor;
 
+        console.log(getImage());
         function getImage(){
             if($location.$$url=="/"){
                 return 'url(img/cool-background.jpg)';

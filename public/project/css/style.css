@@ -32,7 +32,7 @@
  */
 @media only screen and (max-width: 768px) {
     .font-1 {
-        font-size: 30px;
+        font-size: 2em;
     }
 }
 
@@ -40,10 +40,10 @@
  * New button
  */
 .btn-new {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
-    width: 180px;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 2em;
+    width: 12em;
     background-color: transparent;
     color: white;
 }
@@ -51,14 +51,15 @@
 /*
  * Sets base style for each page
  */
-html,
-body {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-image: url(../img/cool-background.jpg);
-}
+
+/*html,*/
+/*body {*/
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
+    /*!*background-image: url(../img/cool-background.jpg);*!*/
+/*}*/
 
 /*
  * Label text alignment
@@ -67,12 +68,15 @@ body {
     color: #666666;
 }
 
-/*
- * Checkbox alignment
- */
 @media (min-width: 768px) {
     .ckb-left {
         text-align: left;
+    }
+}
+
+@media (max-height: 40em) and (min-width: 768px) {
+    .vertical-centering {
+        margin: 8em auto 0;
     }
 }
 
@@ -80,7 +84,7 @@ body {
  * Draw a separator line
  */
 .separator {
-    margin-top: 20px;
+    margin-top: 1em;
     border-top: 1px solid #cccccc !important;
 }
 
@@ -91,12 +95,34 @@ body {
     color: #666666;
     font-weight: 400;
     font-size: small;
-    margin-right: 10px;
+    margin-right: 1em;
 }
 
 .font-blue {
     color: dodgerblue;
     font-weight: 400;
     font-size: small;
-    margin-left: 10 px;
+    margin-left: 1em;
+}
+
+/*
+ * Label text alignment
+ */
+.txt-just {
+    color: #666666;
+    text-align: right;
+}
+
+/*
+ * Text size xx-large
+ */
+.size-xx {
+    font-size: xx-large;
+}
+
+/*
+ * Text size xx-large
+ */
+.size-x {
+    font-size: x-large;
 }
