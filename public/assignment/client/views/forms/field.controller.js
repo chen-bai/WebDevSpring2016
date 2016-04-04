@@ -83,7 +83,6 @@
                     };
                 } else {
                     var values = newField.options.split("\n");
-                    console.log(values);
                     for (var i in values) {
                         var arr = values[i].split(":");
                         var option = {

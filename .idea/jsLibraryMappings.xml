@@ -2,7 +2,7 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{CS5610 node_modules}" />
-    <file url="PROJECT" libraries="{Node.js, angular, angular-route, bootstrap, jquery, jquery-1.10.2, jquery-1.11.3, jquery-ui, ui-bootstrap-tpls-1.2.5}" />
+    <file url="PROJECT" libraries="{Node.js, angular, angular-route, bootstrap, jquery, jquery-1.10.2, jquery-1.11.3, jquery-sortable, jquery-ui, ui-bootstrap-tpls-1.2.5}" />
     <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>
