@@ -3,7 +3,7 @@
         .module("ChanceApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($rootScope, UserService) {
+    function ProfileController($rootScope) {
         $rootScope.txtColor = '#555555';
         $rootScope.imageSource = 'img/black%20logo.png';
         $rootScope.update = update;

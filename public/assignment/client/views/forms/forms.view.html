@@ -4,7 +4,7 @@
     <h1>Forms</h1>
     <ul class="nav nav-tabs">
         <li class="active"><a href="#/forms/{{user._id}}">Forms</a></li>
-        <li><a href="#/form-fields/{{user._id}}">Fields</a></li>
+        <li><a href="#/form/{{form._id}}/fields" ng-class="linkStyle">Fields</a></li>
     </ul>
 
     <div class="tab-content">
@@ -23,7 +23,8 @@
                 <tbody>
                 <tr>
                     <td>
-                        <input ng-model="form.title" ng-value="form.title" type="text" placeholder="name" class="form-control"/>
+                        <input ng-model="form.title" ng-value="form.title" type="text" placeholder="name"
+                               class="form-control"/>
                     </td>
                     <td align="center" class="nowrap">
                         <a class="rm-background">
@@ -37,8 +38,8 @@
                     </td>
                 </tr>
                 <tr ng-repeat="currentForm in foundForms">
-                    <td>
-                        <a href="#/form-fields/{{currentForm._id}}" class="rm-ul">{{currentForm.title}}</a>
+                    <td ng-click="selectForm($index)">
+                        <a class="rm-ul">{{currentForm.title}}</a>
                     </td>
                     <td align="center" class="nowrap">
                         <a class="rm-background">
