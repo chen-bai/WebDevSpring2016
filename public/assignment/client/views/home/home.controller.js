@@ -3,7 +3,5 @@
         .module("FormBuilderApp")
         .controller("HomeController", HomeController);
 
-    function HomeController(){
-
-    }
+    function HomeController(){}
 })();

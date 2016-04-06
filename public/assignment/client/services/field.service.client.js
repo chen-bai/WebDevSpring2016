@@ -5,6 +5,7 @@
 
     function FieldService($http) {
         var api = {
+            updateAllFieldsForForm: updateAllFieldsForForm,
             deleteFieldById: deleteFieldById,
             updateFieldById: updateFieldById,
             findFields: findFields,
@@ -12,6 +13,10 @@
         };
 
         return api;
+
+        function updateAllFieldsForForm(formId, fields){
+            return $http.put("/api/assignment/form/"+formId+"/field", fields);
+        }
 
         function findFields(formId) {
             return $http.get("/api/assignment/form/" + formId + "/field");

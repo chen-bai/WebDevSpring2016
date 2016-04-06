@@ -7,7 +7,7 @@
         <li class="active"><a href="#/fields/{{user._id}}">Fields</a></li>
     </ul>
     <table class="table">
-        <tbody>
+        <tbody jga-sortable ng-model="fields">
         <tr ng-repeat="field in fields" ng-switch="field.type" class="placeholder">
             <td class="td-border" ng-switch-default>
                 <label>{{field.label}}:</label>
@@ -56,11 +56,15 @@
                 </a>
                 <a class="rm-background" href="#/form/{{form._id}}/fields">
                             <span class="glyphicon glyphicon-big glyphicon-align-justify"
-                                  title="Reorder Field" aria-label="Reorder" ng-click="vm.log()"></span>
+                                  title="Reorder Field" aria-label="Reorder"></span>
                 </a>
             </td>
         </tr>
-        <tr>
+        </tbody>
+    </table>
+    <table class="table">
+        <tbody>
+        <tr ng-hide="fields.length==0">
             <td class="separator"></td>
             <td class="separator"></td>
         </tr>

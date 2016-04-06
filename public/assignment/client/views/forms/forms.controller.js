@@ -19,7 +19,8 @@
         $rootScope.form = {
             _id: null,
             title: null,
-            userId: userId
+            userId: userId,
+            fields:null
         }
 
         if(selectedFormIndex==-1){

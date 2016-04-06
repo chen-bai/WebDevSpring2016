@@ -4,16 +4,17 @@
         .controller("FieldController", FieldController);
 
     function FieldController($rootScope, FieldService) {
-        FieldService.findFields($rootScope.form._id)
-            .then(function (response) {
-                $rootScope.fields = response.data;
-            });
-
+        $rootScope.fields = $rootScope.form.fields;
         $rootScope.removeField = removeField;
         $rootScope.addField = addField;
         $rootScope.selectFieldInfo = selectFieldInfo;
         $rootScope.updateField = updateField;
         $rootScope.newField = {label: null, placeholder: null, options: []};
+
+        FieldService.findFields($rootScope.form._id)
+            .then(function (response) {
+                $rootScope.fields = response.data;
+            });
 
         function removeField(index) {
             var fieldId = $rootScope.fields[index]._id;

@@ -31,4 +31,10 @@ module.exports = function (app, formModel) {
         var field = req.body;
         res.json(formModel.updateField(formId, fieldId, field));
     });
+
+    app.put('/api/assignment/form/:formId/field', function(req,res){
+        var formId = req.params.formId;
+        var fields= req.body;
+        res.json(formModel.updateAllFields(formId, fields));
+    })
 };
