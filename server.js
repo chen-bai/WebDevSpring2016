@@ -1,11 +1,11 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 var multer = require('multer');
 
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: true}));
 app.use(multer());
 
 /*app.get('/hello', function(req, res){
