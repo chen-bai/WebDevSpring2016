@@ -58,7 +58,7 @@ module.exports = function (db, mongoose) {
             title: form.title,
             fields: form.fields,
             created: form.created,
-            updated: form.updated
+            updated: Date.now()
         }, callback)
     }
 
@@ -66,6 +66,7 @@ module.exports = function (db, mongoose) {
         FormModel.update({$and: [{_id: formId}, {'fields._id': fieldId}]},
             {
                 $set: {
+                    'updated': Date.now(),
                     'fields.$.label': field.label,
                     'fields.$.type': field.type,
                     'fields.$.placeholder': field.placeholder,
@@ -86,8 +87,9 @@ module.exports = function (db, mongoose) {
         FieldModel.remove({_id: fieldId}, callback);
     }
 
-    function removeFieldFormForm(formId, fieldId, callback){
-        FormModel.update({_id: formId}, {$pull: {fields : {_id: fieldId}}}, callback);
+    function removeFieldFormForm(formId, fieldId, callback) {
+        FormModel.update({_id: formId},
+            {$pull: {fields: {_id: fieldId}}, $set: {updated: Date.now()}}, callback);
     }
 
     function createField(field, callback) {
@@ -106,11 +108,11 @@ module.exports = function (db, mongoose) {
             }, callback)
     }
 
-    function addFieldToForm(formId, field, callback){
-        FormModel.update({_id: formId}, {$push: {fields: field}}, callback);
+    function addFieldToForm(formId, field, callback) {
+        FormModel.update({_id: formId}, {$push: {fields: field}, $set: {updated: Date.now()}}, callback);
     }
 
     function updateAllFieldsForForm(formId, fields, callback) {
-        FormModel.update({_id: formId}, {$set: {fields: fields}}, callback);
+        FormModel.update({_id: formId}, {$set: {fields: fields, updated: Date.now()}}, callback);
     }
 };
