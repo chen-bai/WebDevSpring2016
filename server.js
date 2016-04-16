@@ -14,9 +14,17 @@ app.use(multer());
  res.send('hello world');
  });*/
 
-require("./public/assignment/server/app.js")(app, mongoose);
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
+    connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+        process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+        process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+        process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+        process.env.OPENSHIFT_APP_NAME;
+}
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+
+require("./public/assignment/server/app.js")(app, mongoose);
 
 app.listen(port, ipaddress);
