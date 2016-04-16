@@ -13,15 +13,15 @@ app.use(multer());
  res.send('hello world');
  });*/
 
-var connectionString = 'mongodb://localhost/FormBuilderDB';
+var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/FormBuilderDB';
 
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-    connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-        process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-        process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-        process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-        process.env.OPENSHIFT_APP_NAME;
-}
+//if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
+//    connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+//        process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+//        process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+//        process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+//        process.env.OPENSHIFT_APP_NAME;
+//}
 
 var db = mongoose.connect(connectionString);
 
