@@ -8,6 +8,7 @@
         var api = {
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
+            findUserById: findUserById,
             findAllUsers: findAllUsers,
             createUser: createUser,
             deleteUser: deleteUser,
@@ -15,6 +16,10 @@
         };
 
         return api;
+
+        function findUserById(userId) {
+            return $http.get("/api/assignment/user/username/" + userId);
+        }
 
         function findUserByUsername(username) {
             return $http.get("/api/assignment/user/username/" + username);
@@ -37,6 +42,7 @@
         }
 
         function updateUser(userId, user) {
+            console.log(user);
             return $http.put("/api/assignment/user/" + userId, user);
         }
     }

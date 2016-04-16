@@ -1,6 +1,12 @@
-var forms = require("./form.mock.json");
+//var forms = require("./form.mock.json");
 
-module.exports = function () {
+module.exports = function (mongoose) {
+    var FormSchema = require("./form.schema.server.js")(mongoose);
+    var FormModel = mongoose.model('Form', FormSchema);
+
+    var FieldSchema = require("./field.schema.server.js")(mongoose);
+    var FieldModel = mongoose.model('Field', FieldSchema);
+
     var api = {
         create: create,
         findAllFormsForUser: findAllFormsForUser,
@@ -9,160 +15,102 @@ module.exports = function () {
         findByTitle: findByTitle,
         remove: remove,
         update: update,
+        updateFormField: updateFormField,
+        removeFieldFormForm: removeFieldFormForm,
         findFields: findFields,
         findFieldById: findFieldById,
         removeField: removeField,
         createField: createField,
         updateField: updateField,
-        updateAllFields: updateAllFields
+        addFieldToForm: addFieldToForm,
+        updateAllFieldsForForm: updateAllFieldsForForm
     };
 
     return api;
 
-    function create(form) {
-        forms.push(form);
-        return form;
+    function create(form, callback) {
+        FormModel.create(form, callback);
     }
 
-    function findAllFormsForUser(userId) {
-        var allForms = [];
-        for (var i in forms) {
-            if (forms[i].userId == userId) {
-                allForms.push(forms[i]);
-            }
-        }
-        return allForms;
+    function findAllFormsForUser(userId, callback) {
+        FormModel.find({userId: userId}, callback);
     }
 
-    function findAll() {
-        return forms;
+    function findAll(callback) {
+        FormModel.find(callback);
     }
 
-    function findById(formId) {
-        var form;
-        for (var i in forms) {
-            if (forms[i]._id == formId) {
-                form = forms[i];
-                break;
-            }
-        }
-        return form;
+    function findById(formId, callback) {
+        FormModel.findById(formId, callback);
     }
 
-    function findByTitle(title) {
-        var form;
-        for (var i in forms) {
-            if (forms[i].title == title) {
-                form = forms[i];
-                break;
-            }
-        }
-        return form;
+    function findByTitle(title, callback) {
+        FormModel.find({title: title}, callback);
     }
 
-    function remove(formId) {
-        var index;
-        for (var i in forms) {
-            if (forms[i]._id == formId) {
-                index = i;
-                break;
-            }
-        }
-        forms.splice(index, 1);
-        return forms;
+    function remove(formId, callback) {
+        FormModel.remove({_id: formId}, callback);
     }
 
-    function update(formId, form) {
-        for (var i in forms) {
-            if (forms[i]._id == formId) {
-                forms[i] = form;
-                break;
-            }
-        }
-        return form;
+    function update(formId, form, callback) {
+        FormModel.findOneAndUpdate({_id: formId}, {
+            userId: form.userId,
+            title: form.title,
+            fields: form.fields,
+            created: form.created,
+            updated: form.updated
+        }, callback)
     }
 
-    function findFields(formId) {
-        for (var i in forms) {
-            if (forms[i]._id == formId) {
-                return forms[i].fields;
-            }
-        }
-    }
-
-    function findFieldById(formId, fieldId) {
-        var fields = [];
-        var index;
-        for (var i in forms) {
-            if (forms[i]._id == formId) {
-                fields = forms[i].fields;
-                break;
-            }
-        }
-        for (var i in fields) {
-            if (fields[i]._id == fieldId) {
-                index = i;
-            }
-        }
-        return fields[index];
-    }
-
-    function removeField(formId, fieldId) {
-        var formIndex;
-        var fieldIndex;
-        for (var i in forms) {
-            if (forms[i]._id == formId) {
-                formIndex = i;
-                for(var j in forms[i].fields){
-                    if(forms[i].fields[j]._id==fieldId){
-                        fieldIndex = j;
-                        break;
-                    }
+    function updateFormField(formId, fieldId, field, callback) {
+        FormModel.update({$and: [{_id: formId}, {'fields._id': fieldId}]},
+            {
+                $set: {
+                    'fields.$.label': field.label,
+                    'fields.$.type': field.type,
+                    'fields.$.placeholder': field.placeholder,
+                    'fields.$.options': field.options
                 }
-                break;
-            }
-        }
-        forms[formIndex].fields.splice(fieldIndex, 1);
-        return forms[formIndex].fields;
+            }, callback)
     }
 
-    function createField(formId, field){
-        var index;
-        for (var i in forms) {
-            if (forms[i]._id == formId) {
-                index = i;
-                break;
-            }
-        }
-        forms[index].fields.push(field);
-        return forms[index].fields;
+    function findFields(formId, callback) {
+        FormModel.findById(formId, callback);
     }
 
-    function updateField(formId, fieldId, field){
-        var fieldIndex;
-        var formIndex;
-        for (var i in forms) {
-            if (forms[i]._id == formId) {
-                formIndex = i;
-                for(var j in forms[i].fields){
-                    if(forms[i].fields[j]._id == fieldId){
-                        fieldIndex = j;
-                        break;
-                    }
+    function findFieldById(fieldId, callback) {
+        FieldModel.findById(fieldId, callback);
+    }
+
+    function removeField(fieldId, callback) {
+        FieldModel.remove({_id: fieldId}, callback);
+    }
+
+    function removeFieldFormForm(formId, fieldId, callback){
+        FormModel.update({_id: formId}, {$pull: {fields : {_id: fieldId}}}, callback);
+    }
+
+    function createField(field, callback) {
+        FieldModel.create(field, callback);
+    }
+
+    function updateField(fieldId, field, callback) {
+        FieldModel.update({_id: fieldId},
+            {
+                $set: {
+                    label: field.label,
+                    type: field.type,
+                    placeholder: field.placeholder,
+                    options: field.options
                 }
-                break;
-            }
-        }
-        forms[formIndex].fields[fieldIndex] = field;
-        return forms[formIndex].fields;
+            }, callback)
     }
 
-    function updateAllFields(formId, fields){
-        for (var i in forms) {
-            if (forms[i]._id == formId) {
-                forms[i].fields = fields;
-                return fields;
-            }
-        }
+    function addFieldToForm(formId, field, callback){
+        FormModel.update({_id: formId}, {$push: {fields: field}}, callback);
+    }
+
+    function updateAllFieldsForForm(formId, fields, callback) {
+        FormModel.update({_id: formId}, {$set: {fields: fields}}, callback);
     }
 };

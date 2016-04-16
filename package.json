@@ -26,6 +26,7 @@
     "angular-ui-sortable": "^0.14.0",
     "body-parser": "^1.15.0",
     "express": "^3.21.2",
+    "mongoose": "^4.4.12",
     "multer": "^1.1.0",
     "node-uuid": "^1.4.7",
     "uuid": "^2.0.1"

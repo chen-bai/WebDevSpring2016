@@ -8,20 +8,21 @@
 
         function register(user) {
             var newUser = {
-                _id: (new Date).getTime(),
-                firstName: null,
-                lastName: null,
                 username: user.username,
                 password: user.password,
-                email: user.email,
-                roles: []
+                firstName: "",
+                lastName: "",
+                emails: [user.emails],
+                phones: []
+                //roles: []
             };
 
-            $rootScope.user = newUser;
+            $rootScope.Username = newUser.username;
 
             UserService.createUser(newUser)
                 .then(function (response) {
-                    $location.url("/profile/" + newUser._id);
+                    $rootScope.user = response.data;
+                    $location.url("/profile/" + response.data._id);
                 });
         }
     }

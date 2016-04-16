@@ -21,12 +21,12 @@
             return $http.post("/api/assignment/user/" + userId + "/form", form);
         }
 
-        function deleteFormById(formId) {
-            return $http.delete("/api/assignment/form/" + formId);
+        function deleteFormById(userId, formId) {
+            return $http.delete("/api/assignment/user/"+ userId+ "/form/" + formId);
         }
 
-        function updateFormById(formId, newForm) {
-            return $http.put("/api/assignment/form/"+formId, newForm);
+        function updateFormById(userId, formId, newForm) {
+            return $http.put("/api/assignment/user/"+ userId+ "/form/"+formId, newForm);
         }
     }
 })();

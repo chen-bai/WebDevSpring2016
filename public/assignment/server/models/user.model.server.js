@@ -1,6 +1,9 @@
-var users = require("./user.mock.json");
+//var users = require("./user.mock.json");
 
-module.exports = function() {
+module.exports = function (mongoose) {
+    var UserSchema = require("./user.schema.server.js")(mongoose);
+    var UserModel = mongoose.model('User', UserSchema);
+
     var api = {
         findAll: findAll,
         findById: findById,
@@ -9,71 +12,42 @@ module.exports = function() {
         update: update,
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials
-    }
+    };
 
     return api;
 
-    function findUserByCredentials(username, password) {
-        var user;
-        for (var i in users) {
-            if (users[i].username == username && users[i].password == password) {
-                user = users[i];
-                break;
-            }
-        }
-        return user;
+    function findUserByCredentials(username, password, callback) {
+        UserModel.find({$and: [{username: username}, {password: password}]}, callback);
     }
 
-    function findUserByUsername(username) {
-        var user;
-        for (var i in users) {
-            if (users[i].username == username) {
-                user = users[i];
-                break;
-            }
-        }
-        return user;
+    function findUserByUsername(username, callback) {
+        UserModel.find({username: username}, callback);
     }
 
-    function findById(userId) {
-        var user;
-        for (var i in users) {
-            if (users[i]._id == userId) {
-                user = users[i];
-                break;
-            }
-        }
-        return user;
+    function findById(userId, callback) {
+        UserModel.findById(userId, callback);
     }
 
-    function findAll() {
-        return users;
+    function findAll(callback) {
+        UserModel.find(callback);
     }
 
-    function create(user) {
-        users.push(user);
-        return users;
+    function create(user, callback) {
+        UserModel.create(user, callback);
     }
 
-    function remove(userId) {
-        var index;
-        for (var i in users) {
-            if (users[i]._id == userId) {
-                index = i;
-                break;
-            }
-        }
-        users.splice(index, 1);
-        return users;
+    function remove(userId, callback) {
+        UserModel.remove({_id: userId}, callback);
     }
 
-    function update(userId, user) {
-        for (var i in users) {
-            if (users[i]._id == userId) {
-                users[i] = user;
-                break;
-            }
-        }
-        return user;
+    function update(userId, user, callback) {
+        UserModel.findOneAndUpdate({_id: userId}, {
+            username: user.username,
+            password: user.password,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            emails: user.emails,
+            phones: user.phones
+        }, callback)
     }
 };

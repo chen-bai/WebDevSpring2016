@@ -9,7 +9,7 @@
         $rootScope.addField = addField;
         $rootScope.selectFieldInfo = selectFieldInfo;
         $rootScope.updateField = updateField;
-        $rootScope.newField = {label: null, placeholder: null, options: []};
+        $rootScope.newField = {label: "", type:"", placeholder: "", options: []};
 
         FieldService.findFields($rootScope.form._id)
             .then(function (response) {

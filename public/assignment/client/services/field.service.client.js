@@ -34,19 +34,19 @@
             var field;
             switch (fieldType) {
                 case 'single':
-                    field = {_id: null, label: "New Text Field", type: "TEXT", placeholder: "New Field"};
+                    field = {label: "New Text Field", type: "TEXT", placeholder: "New Field", options:[]};
                     break;
                 case 'multi':
-                    field = {_id: null, label: "New Text Field", type: "TEXTAREA", placeholder: "New Field"};
+                    field = {label: "New Text Field", type: "TEXTAREA", placeholder: "New Field", options:[]};
                     break;
                 case 'date':
-                    field = {_id: null, label: "New Date Field", type: "DATE"};
+                    field = {label: "New Date Field", type: "DATE", placeholder: "", options:[]};
                     break;
                 case 'dropdown':
                     field = {
-                        _id: null,
                         label: "New Dropdown",
                         type: "OPTIONS",
+                        placeholder: "",
                         options: [{label: "Option 1", value: "OPTION_1"},
                             {label: "Option 2", value: "OPTION_2"},
                             {label: "Option 3", value: "OPTION_3"}]
@@ -54,7 +54,10 @@
                     break;
                 case 'checkbox':
                     field = {
-                        _id: null, label: "New Checkboxes", type: "CHECKBOXES", options: [
+                        label: "New Checkboxes",
+                        type: "CHECKBOXES",
+                        placeholder: "",
+                        options: [
                             {label: "Option A", value: "OPTION_A"},
                             {label: "Option B", value: "OPTION_B"},
                             {label: "Option C", value: "OPTION_C"}
@@ -63,7 +66,10 @@
                     break;
                 case 'radio' :
                     field = {
-                        _id: null, label: "New Radio Buttons", type: "RADIOS", options: [
+                        label: "New Radio Buttons",
+                        type: "RADIOS",
+                        placeholder: "",
+                        options: [
                             {label: "Option X", value: "OPTION_X"},
                             {label: "Option Y", value: "OPTION_Y"},
                             {label: "Option Z", value: "OPTION_Z"}
@@ -71,7 +77,7 @@
                     };
                     break;
                 default:
-                    field = {_id: null, label: "New Text Field", type: "EMAIL", placeholder: "New Field"};
+                    field = {label: "New Text Field", placeholder: "New Field", options: []};
                     break;
             }
             return $http.post("/api/assignment/form/" + formId + "/field/", field);

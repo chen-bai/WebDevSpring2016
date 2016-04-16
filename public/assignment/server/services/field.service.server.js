@@ -1,40 +1,62 @@
-var uuid = require('node-uuid');
+//var uuid = require('node-uuid');
 
 module.exports = function (app, formModel) {
     app.get('/api/assignment/form/:formId/field', function (req, res) {
         var formId = req.params.formId;
-        res.json(formModel.findFields(formId));
+        formModel.findFields(formId, function (err, form) {
+            res.json(form.fields);
+        });
     });
 
-    app.get('/api/assignment/form/:formId/field/:fieldId', function(req,res){
+    app.get('/api/assignment/form/:formId/field/:fieldId', function (req, res) {
+        var fieldId = req.params.fieldId;
+        formModel.findFieldById(fieldId, function (err, field) {
+            res.json(field);
+        });
+    });
+
+    app.delete('/api/assignment/form/:formId/field/:fieldId', function (req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        res.json(formModel.findFieldById(formId, fieldId));
+        formModel.removeField(fieldId, function (err, result) {
+            formModel.removeFieldFormForm(formId, fieldId, function (err, form) {
+                formModel.findFields(formId, function (err, form) {
+                    res.json(form.fields);
+                })
+            })
+        });
     });
 
-    app.delete('/api/assignment/form/:formId/field/:fieldId', function(req,res){
-        var formId = req.params.formId;
-        var fieldId = req.params.fieldId;
-        res.json(formModel.removeField(formId, fieldId));
-    });
-
-    app.post('/api/assignment/form/:formId/field', function(req,res){
+    app.post('/api/assignment/form/:formId/field', function (req, res) {
         var field = req.body;
         var formId = req.params.formId;
-        field._id = uuid.v1();
-        res.json(formModel.createField(formId, field));
+        formModel.createField(field, function (err, data) {
+            formModel.addFieldToForm(formId, field, function (err, data) {
+                formModel.findFields(formId, function (err, form) {
+                    res.json(form.fields);
+                })
+            })
+        });
     });
 
-    app.put('/api/assignment/form/:formId/field/:fieldId', function(req, res){
+    app.put('/api/assignment/form/:formId/field/:fieldId', function (req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var field = req.body;
-        res.json(formModel.updateField(formId, fieldId, field));
+        formModel.updateField(fieldId, field, function (err, result) {
+            formModel.updateFormField(formId, fieldId, field, function (err, form) {
+                formModel.findFields(formId, function (err, form) {
+                    res.json(form.fields);
+                })
+            })
+        });
     });
 
-    app.put('/api/assignment/form/:formId/field', function(req,res){
+    app.put('/api/assignment/form/:formId/field', function (req, res) {
         var formId = req.params.formId;
-        var fields= req.body;
-        res.json(formModel.updateAllFields(formId, fields));
+        var fields = req.body;
+        formModel.updateAllFieldsForForm(formId, fields, function (err, fields) {
+            res.json(fields);
+        });
     })
 };

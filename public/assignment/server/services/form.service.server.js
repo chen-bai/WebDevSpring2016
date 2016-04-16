@@ -1,31 +1,48 @@
-var uuid = require('node-uuid');
+//var uuid = require('node-uuid');
 
 module.exports = function (app, formModel) {
     app.get('/api/assignment/user/:userId/form', function (req, res) {
         var userId = req.params.userId;
-        res.json(formModel.findAllFormsForUser(userId));
+        formModel.findAllFormsForUser(userId, function(err, forms){
+            res.json(forms);
+        });
     });
 
     app.get('/api/assignment/form/:formId', function(req,res){
         var formId = req.params.formId;
-        res.json(formModel.findById(formId));
+        formModel.findById(formId, function(err, form){
+            res.json(form);
+        });
     });
 
-    app.delete('/api/assignment/form/:formId', function(req,res){
-        var formId = req.params.id;
-        res.json(formModel.remove(formId));
+    app.delete('/api/assignment/user/:userId/form/:formId', function(req,res){
+        var formId = req.params.formId;
+        var userId = req.params.userId;
+        formModel.remove(formId,function(err, result){
+            formModel.findAllFormsForUser(userId, function(err, forms){
+                res.json(forms);
+            });
+        });
     });
 
     app.post('/api/assignment/user/:userId/form', function(req,res){
         var form =req.body;
-        form._id = uuid.v1();
         form.userId = req.params.userId;
-        res.json(formModel.create(form));
+        formModel.create(form, function(err, result){
+            formModel.findAllFormsForUser(form.userId, function(err, forms){
+                res.json(forms);
+            });
+        });
     });
 
-    app.put('/api/assignment/form/:formId', function(req, res){
+    app.put('/api/assignment/user/:userId/form/:formId', function(req, res){
         var form = req.body;
         var formId = req.params.formId;
-        res.json(formModel.update(formId, form));
+        var userId = req.params.userId;
+        formModel.update(formId, form, function(err, forms){
+            formModel.findAllFormsForUser(userId, function(err, forms){
+                res.json(forms);
+            });
+        });
     });
 };
