@@ -3,7 +3,6 @@ var app = express();
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/FormBuilderDB');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -14,6 +13,8 @@ app.use(multer());
  res.send('hello world');
  });*/
 
+var connectionString = 'mongodb://localhost/FormBuilderDB';
+
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
     connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
         process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
@@ -22,9 +23,11 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
         process.env.OPENSHIFT_APP_NAME;
 }
 
+var db = mongoose.connect(connectionString);
+
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
-require("./public/assignment/server/app.js")(app, mongoose);
+require("./public/assignment/server/app.js")(app, db, mongoose);
 
 app.listen(port, ipaddress);

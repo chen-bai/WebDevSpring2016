@@ -1,6 +1,6 @@
 //var forms = require("./form.mock.json");
 
-module.exports = function (mongoose) {
+module.exports = function (db, mongoose) {
     var FormSchema = require("./form.schema.server.js")(mongoose);
     var FormModel = mongoose.model('Form', FormSchema);
 
