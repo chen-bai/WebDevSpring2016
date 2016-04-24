@@ -1,0 +1,86 @@
+/*
+ * Font size of glyphicon
+ */
+.glyphicon-big {
+    font-size: 30px;
+}
+
+/*
+ * Label text alignment
+ */
+.txt-just {
+    text-align: justify !important;
+}
+
+.txt-left {
+    text-align: left !important;
+}
+
+/*
+ * Label position
+ */
+.label-pos {
+    margin-bottom: 0px;
+}
+
+/*
+ * Form style
+ */
+.form-style {
+    padding: 20px;
+}
+
+/*
+ * Remove td border
+ */
+.td-border {
+    border: none !important;
+}
+
+/*
+ * Draw a separator line
+ */
+.separator {
+    border-top: 1px solid black !important;
+}
+
+/*
+ * Locate icon at the middle of td
+ */
+.td-mid {
+    text-align: center;
+    vertical-align: middle !important;
+    /*padding-top: 35px !important;*/
+}
+
+/*
+ * Remove underline of link
+ */
+.rm-ul {
+    text-decoration: none !important;
+    color: black;
+}
+
+/*
+ * Remove background
+ */
+.rm-background {
+    background: none;
+    color: black;
+}
+
+/*
+ * Disabled style
+ */
+.linkDisabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: grey;
+}
+
+/*
+ * Textarea disable resizable
+ */
+.ta-disabled {
+    resize: none;
+}
