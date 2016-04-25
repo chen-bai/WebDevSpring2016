@@ -2,12 +2,23 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var multer = require('multer');
+var passport      = require('passport');
+var cookieParser  = require('cookie-parser');
+var session       = require('express-session');
 var mongoose = require('mongoose');
 
-app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(multer());
+app.use(session({
+    secret: process.env.PASSPORT_SECRET,
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(__dirname + '/public'));
 
 /*app.get('/hello', function(req, res){
  res.send('hello world');
