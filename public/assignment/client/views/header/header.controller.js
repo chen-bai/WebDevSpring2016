@@ -10,6 +10,7 @@
             $rootScope.user = {};
             $rootScope.foundForms = [];
             $rootScope.users = [];
+            $rootScope.account = [];
         }
     }
 })();

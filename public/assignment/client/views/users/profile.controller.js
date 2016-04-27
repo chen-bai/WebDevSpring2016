@@ -28,8 +28,8 @@
                 username: currentUser.username,
                 password: currentUser.password,
                 emails: emails,
-                phones: phones
-                //roles: []
+                phones: phones,
+                roles: currentUser.roles
             };
 
             UserService.updateUser(user._id, user)

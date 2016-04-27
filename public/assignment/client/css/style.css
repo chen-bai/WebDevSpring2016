@@ -16,6 +16,10 @@
     text-align: left !important;
 }
 
+.txt-center {
+    text-align: center;
+}
+
 /*
  * Label position
  */
@@ -83,4 +87,11 @@
  */
 .ta-disabled {
     resize: none;
+}
+
+/*
+ * Tips
+ */
+.tips {
+    color: red;
 }

@@ -16,24 +16,24 @@ module.exports = function (db, mongoose) {
 
     return api;
 
-    function findUserByCredentials(username, password, callback) {
-        UserModel.find({$and: [{username: username}, {password: password}]}, callback);
+    function findUserByCredentials(username, password) {
+        return UserModel.find({$and: [{username: username}, {password: password}]});
     }
 
-    function findUserByUsername(username, callback) {
-        UserModel.find({username: username}, callback);
+    function findUserByUsername(username) {
+        return UserModel.find({username: username});
     }
 
-    function findById(userId, callback) {
-        UserModel.findById(userId, callback);
+    function findById(userId) {
+        return UserModel.findById(userId);
     }
 
-    function findAll(callback) {
-        UserModel.find(callback);
+    function findAll() {
+        return UserModel.find();
     }
 
-    function create(user, callback) {
-        UserModel.create(user, callback);
+    function create(user) {
+        UserModel.create(user);
     }
 
     function remove(userId, callback) {
@@ -47,7 +47,8 @@ module.exports = function (db, mongoose) {
             firstName: user.firstName,
             lastName: user.lastName,
             emails: user.emails,
-            phones: user.phones
+            phones: user.phones,
+            roles: user.roles
         }, callback)
     }
 };

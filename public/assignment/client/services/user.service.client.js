@@ -10,7 +10,8 @@
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
             findAllUsers: findAllUsers,
-            createUser: createUser,
+            registerUser: registerUser,
+            createAccount: createAccount,
             deleteUser: deleteUser,
             updateUser: updateUser
         };
@@ -33,8 +34,12 @@
             return $http.get("/api/assignment/user");
         }
 
-        function createUser(user) {
-            return $http.post("/api/assignment/user", user);
+        function registerUser(user) {
+            return $http.post("/api/assignment/register", user);
+        }
+
+        function createAccount(account){
+            return $http.post("/api/assignment/account", account);
         }
 
         function deleteUser(userId) {
@@ -42,7 +47,6 @@
         }
 
         function updateUser(userId, user) {
-            console.log(user);
             return $http.put("/api/assignment/user/" + userId, user);
         }
     }

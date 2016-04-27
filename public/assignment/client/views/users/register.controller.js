@@ -13,13 +13,13 @@
                 firstName: "",
                 lastName: "",
                 emails: [user.emails],
-                phones: []
-                //roles: []
+                phones: [],
+                roles: []
             };
 
             $rootScope.Username = newUser.username;
 
-            UserService.createUser(newUser)
+            UserService.registerUser(newUser)
                 .then(function (response) {
                     $rootScope.user = response.data;
                     $location.url("/profile/" + response.data._id);
