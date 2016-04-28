@@ -7,23 +7,20 @@
         $rootScope.login = login;
 
         function login(user) {
-            UserService.findUserByCredentials(user.username, user.password)
-                .then(function (response) {
-                    $rootScope.user = response.data;
-                    $rootScope.user.emails = response.data.emails.toString().replace(/,/g, ", ");
-                    $rootScope.user.phones = response.data.phones.toString().replace(/,/g, ", ");
-                    $rootScope.Username = response.data.username;
-                        findAllUsersForAdmin();
-                    findAllFormsForUser($rootScope.user);
-                    $location.url("/profile/" + response.data._id);
-                });
-        }
-
-        function findAllUsersForAdmin() {
-            UserService.findAllUsers()
-                .then(function (response) {
-                    $rootScope.users = response.data;
-                })
+            if(user){
+                UserService
+                    .login(user)
+                    .then(
+                        function(response){
+                            $rootScope.user = response.data;
+                            findAllFormsForUser($rootScope.user);
+                            $location.url("/profile/" + response.data._id);
+                        },
+                        function(err){
+                            $rootScope.error = err;
+                        }
+                    )
+            }
         }
 
         function findAllFormsForUser(user) {

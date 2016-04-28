@@ -41,7 +41,6 @@
                     if (response.data.phones != null) {
                         $rootScope.user.phones = response.data.phones.toString().replace(/,/g, ", ");
                     }
-                    $rootScope.Username = response.data.username;
                     $location.url("/profile/" + response.data._id);
                 });
         }

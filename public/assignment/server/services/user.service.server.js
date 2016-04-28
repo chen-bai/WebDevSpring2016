@@ -7,15 +7,17 @@ module.exports = function (app, userModel) {
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
+    var auth = authorized;
+
     function localStrategy(username, password, done) {
         userModel
             .findUserByCredentials(username, password)
             .then(
-                function (user) {
-                    if (!user) {
+                function (users) {
+                    if (!users) {
                         return done(null, false);
                     }
-                    return done(null, user);
+                    return done(null, users[0]);
                 },
                 function (err) {
                     if (err) {
@@ -33,8 +35,8 @@ module.exports = function (app, userModel) {
         userModel
             .findById(user._id)
             .then(
-                function (users) {
-                    done(null, users[0]);
+                function (user) {
+                    done(null, user);
                 },
                 function (err) {
                     done(err, null);
@@ -70,22 +72,15 @@ module.exports = function (app, userModel) {
             .findUserByUsername(newUser.username)
             .then(
                 function (user) {
-                    if (user) {
+                    if (user.length > 0) {
                         res.json(null);
                     } else {
-                        userModel.create(newUser)
-                            .then(function (user) {
-                                    res.json(user);
-                                },
-                                function (err) {
-                                    res.status(400).send(err);
-                                });
+                        return userModel.create(newUser)
                     }
                 },
                 function (err) {
                     res.status(400).send(err);
-                }
-            )
+                })
             .then(
                 function (user) {
                     if (user) {
@@ -97,43 +92,56 @@ module.exports = function (app, userModel) {
                             }
                         })
                     }
-                }
-            );
-    });
-
-    app.post('/api/assignment/account', function (req, res) {
-        var newAccount = req.body;
-        userModel
-            .findUserByUsername(newAccount.username)
-            .then(
-                function (users) {
-                    if (users == null) {
-                        res.json(null);
-                    } else {
-                        userModel.create(newAccount);
-                        userModel.findAll()
-                            .then(function (users) {
-                                    res.json(users);
-                                },
-                                function (err) {
-                                    res.status(400).send(err);
-                                });
-                    }
-                },
-                function (err) {
-                    res.status(400).send(err);
-                }
-            );
-    });
-
-    app.get('/api/assignment/user', function (req, res) {
-        userModel.findAll()
-            .then(function (users) {
-                    res.json(users);
-                },
-                function (err) {
-                    res.status(400).send(err);
                 });
+    });
+
+    app.post('/api/assignment/account', auth, function (req, res) {
+        if (isAdmin(req.user)) {
+            var newAccount = req.body;
+            userModel
+                .findUserByUsername(newAccount.username)
+                .then(
+                    function (user) {
+                        if (user.length == 0) {
+                            return userModel.create(newAccount)
+                                .then(function () {
+                                        return userModel.findAll()
+                                    },
+                                    function (err) {
+                                        res.status(400).send(err);
+                                    })
+                        } else {
+                            return userModel.findAll()
+                        }
+                    },
+                    function (err) {
+                        res.status(400).send(err);
+                    })
+                .then(
+                    function (users) {
+                        res.json(users);
+                    },
+                    function (err) {
+                        res.status(400).send(err);
+                    }
+                );
+        } else {
+            res.status(403);
+        }
+    });
+
+    app.get('/api/assignment/user', auth, function (req, res) {
+        if (isAdmin(req.user)) {
+            userModel.findAll()
+                .then(function (users) {
+                        res.json(users);
+                    },
+                    function (err) {
+                        res.status(400).send(err);
+                    });
+        } else {
+            res.status(403);
+        }
     });
 
     app.get('/api/assignment/user/:id', function (req, res) {
@@ -162,21 +170,26 @@ module.exports = function (app, userModel) {
             );
     });
 
-    app.get("/api/assignment/user/username/:username/password/:password", function (req, res) {
-        var username = req.params.username;
-        var password = req.params.password;
-        userModel.findUserByCredentials(username, password)
-            .then(
-                function (users) {
-                    res.json(users[0]);
-                },
-                function (err) {
-                    res.status(400).send(err);
-                }
-            );
+    app.put('/api/assignment/user/:id', function (req, res) {
+        var userId = req.params.id;
+        userModel.update(userId, req.body, function (err, result) {
+            if (result) {
+                userModel.findById(userId)
+                    .then(
+                        function (users) {
+                            res.json(users);
+                        },
+                        function (err) {
+                            res.status(400).send(err);
+                        })
+            } else {
+                res.status(400).send(err);
+            }
+        })
     });
 
-    app.put('/api/assignment/user/:id', function (req, res) {
+    app.put('/api/assignment/account/:id', auth, function (req, res) {
+        if (isAdmin(req.user)) {
             var userId = req.params.id;
             userModel.update(userId, req.body, function (err, result) {
                 if (result) {
@@ -192,24 +205,37 @@ module.exports = function (app, userModel) {
                     res.status(400).send(err);
                 }
             })
-        });
-
-    app.delete('/api/assignment/user/:id', function (req, res) {
-        var id = req.params.id;
-        userModel.remove(id, function (err, count) {
-            if (count) {
-                userModel.findAll()
-                    .then(function (users) {
-                            res.json(users);
-                        },
-                        function (err) {
-                            res.status(400).send(err);
-                        });
-            }
-            else {
-                res.status(400).send(err);
-            }
-        });
+        } else {
+            res.status(403);
+        }
     });
-}
-;
+
+    app.delete('/api/assignment/user/:id', auth, function (req, res) {
+        if (isAdmin(req.user)) {
+            var id = req.params.id;
+            userModel.remove(id, function (err, count) {
+                if (count) {
+                    userModel.findAll()
+                        .then(function (users) {
+                                res.json(users);
+                            },
+                            function (err) {
+                                res.status(400).send(err);
+                            });
+                }
+                else {
+                    res.status(400).send(err);
+                }
+            });
+        } else {
+            res.status(403);
+        }
+    });
+
+    function isAdmin(user) {
+        if (user.roles.indexOf("admin") > -1) {
+            return true
+        }
+        return false;
+    }
+};

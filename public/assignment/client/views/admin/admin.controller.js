@@ -4,11 +4,15 @@
         .controller("AdminController", AdminController);
 
     function AdminController($rootScope, UserService) {
-        UserService.findAllUsers(
-            function (response) {
-                $rootScope.users = response.data;
-            }
-        );
+        function init() {
+            UserService.findAllUsers()
+                .then(function (response) {
+                        $rootScope.users = response.data;
+                    }
+                );
+        }
+
+        init();
 
         $rootScope.adminAddAccount = adminAddAccount;
         $rootScope.adminRemoveAccount = adminRemoveAccount;
@@ -161,7 +165,7 @@
                         roles: roles
                     };
 
-                    UserService.updateUser(newAccount._id, newAccount)
+                    UserService.updateAccount(newAccount._id, newAccount)
                         .then(function (response) {
                             $rootScope.users[selectedAccountIndex] = response.data;
                             $rootScope.account = {};

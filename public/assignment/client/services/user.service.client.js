@@ -13,10 +13,21 @@
             registerUser: registerUser,
             createAccount: createAccount,
             deleteUser: deleteUser,
-            updateUser: updateUser
+            updateUser: updateUser,
+            updateAccount: updateAccount,
+            login: login,
+            logout: logout
         };
 
         return api;
+
+        function logout() {
+            return $http.post("/api/assignment/logout");
+        }
+
+        function login(user) {
+            return $http.post("/api/assignment/login", user);
+        }
 
         function findUserById(userId) {
             return $http.get("/api/assignment/user/username/" + userId);
@@ -27,7 +38,7 @@
         }
 
         function findUserByCredentials(username, password) {
-            return $http.get("/api/assignment/user/username/"+username+"/password/" + password);
+            return $http.get("/api/assignment/user/username/" + username + "/password/" + password);
         }
 
         function findAllUsers() {
@@ -38,7 +49,7 @@
             return $http.post("/api/assignment/register", user);
         }
 
-        function createAccount(account){
+        function createAccount(account) {
             return $http.post("/api/assignment/account", account);
         }
 
@@ -48,6 +59,10 @@
 
         function updateUser(userId, user) {
             return $http.put("/api/assignment/user/" + userId, user);
+        }
+
+        function updateAccount(userId, user) {
+            return $http.put("/api/assignment/account/" + userId, user);
         }
     }
 })();
