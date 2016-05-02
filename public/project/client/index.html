@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ChanceApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="icon" href="../../favicon.icon">-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-flow/2.5.1/ng-flow-standalone.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/home/home.controller.js"></script>
+    <script src="views/users/login.controller.js"></script>
+    <script src="views/users/signup.controller.js"></script>
+    <script src="views/users/profile.controller.js"></script>
+    <script src="views/main/main.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script>
+    <script src="views/users/portfolio.controller.js"></script>
+    <script src="views/users/account.controller.js"></script>
+    <script src="views/search/jobs.controller.js"></script>
+    <script src="views/projects/publish.controller.js"></script>
+    <script src="views/projects/projects.controller.js"></script>
+    <script src="views/projects/details.controller.js"></script>
+    <script src="views/projects/application.controller.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/projects.service.client.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link ng-href="{{templateStyle}}" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/theme.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="MainController">
+<div ng-hide="currentUser" class="site-wrapper" ng-style="{'background-color': getColor(), 'background-image': getImage()}">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div ng-include="'views/header/header.view.html'"></div>
+            <div ng-view class="vertical-centering"></div>
+        </div>
+    </div>
+</div>
+<div ng-show="currentUser" ng-include="'views/header/subheader.view.html'"></div>
+<div ng-show="currentUser" class="container-fluid">
+    <div class="row">
+        <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+        <div ng-view></div>
+    </div>
+</div>
+</body>
+</html>

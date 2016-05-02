@@ -1,0 +1,28 @@
+<div ng-controller="SidebarController" class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        <li ng-class="{'active' : $location.url()=='/portfolio/'+user._id}">
+            <a href="#/portfolio/{{user._id}}">Portfolio</a>
+        </li>
+        <li ng-class="{'active' : $location.url()=='/profile/'+user._id}">
+            <a href="#/profile/{{user._id}}">Profile</a>
+        </li>
+        <li ng-class="{'active' : $location.url()=='/project/'+user._id}">
+            <a href="#/project/{{user._id}}">My Projects</a>
+        </li>
+        <li ng-class="{'active' : $location.url()=='/publish/'+user._id}" ng-show="user.type=='employer'">
+            <a href="#/publish/{{user._id}}">Post a Project</a>
+        </li>
+        <li ng-class="{'active' : $location.url()=='/jobs'}">
+            <a href="#/jobs">Find Jobs</a>
+        </li>
+        <li ng-class="{'active' : $location.url()=='/account/'+user._id}">
+            <a href="#/account/{{user._id}}">Account</a>
+        </li>
+        <!--<li>&lt;!&ndash;<li ng-class="{'active' : $location.url()=='/admin/'+user._id}" ng-show="user.roles.indexOf('admin')>=0">&ndash;&gt;-->
+            <!--<a href="#/admin/{{user._id}}">Admin</a>-->
+        <!--</li>-->
+        <li>
+            <a href="#/" ng-click="logout()">Logout</a>
+        </li>
+    </ul>
+</div>

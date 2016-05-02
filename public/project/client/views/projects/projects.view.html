@@ -1,0 +1,119 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="panel widget light-widget">
+        <div class="panel-heading no-title"></div>
+        <form class="form-horizontal" action="#" role="form">
+            <div class="panel-body">
+                <h1>My Projects</h1>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#/project/{{user._id}}">My Projects</a></li>
+                    <li><a href="#/details/{{project._id}}" ng-class="linkStyle">Project Details</a></li>
+                    <li><a href="#/application/{{project._id}}"
+                           ng-class="{'linkDisabled' : project&& project.status!='published'}">Job Applications</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="forms" class="tab-pane fade in active">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr class="info">
+                                <th class="txt-center" ng-click="sort('title', titleOrder)">
+                        <span class="menu-icon">
+                            <i ng-class="{'fa fa-unsorted': titleOrder==0, 'fa fa-sort-asc':titleOrder==1,
+                            'fa fa-sort-desc':titleOrder==-1}"></i> Project Title</span>
+                                </th>
+                                <th class="txt-center">
+                                    Project Status
+                                </th>
+                                <th class="txt-center" ng-click="sort('started', startedOrder)">
+                                     <span class="menu-icon">
+                                         <i ng-class="{'fa fa-unsorted': startedOrder==0,
+                                         'fa fa-sort-asc':startedOrder==1,
+                                         'fa fa-sort-desc':startedOrder==-1}"></i> Started</span>
+                                </th>
+                                <th class="txt-center" ng-click="sort('deadline', deadlineOrder)">
+                                    <span class="menu-icon">
+                                        <i ng-class="{'fa fa-unsorted': deadlineOrder==0,
+                                        'fa fa-sort-asc':deadlineOrder==1,
+                                        'fa fa-sort-desc':deadlineOrder==-1}"></i> Project Deadline</span>
+                                </th>
+                                <th class="txt-center">
+                                    Action
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td align="center">
+                                    <input ng-model="project.title" ng-value="project.title" type="text"
+                                           placeholder="Title"
+                                           class="form-control"/>
+                                </td>
+                                <td align="center">
+                                    <span class="label label-danger" ng-show="project.status=='editing'">Editing</span>
+                                    <span class="label label-primary"
+                                          ng-show="project.status=='published'">Published</span>
+                                    <span class="label label-info"
+                                          ng-show="project.status=='processing'">Processing</span>
+                                    <span class="label label-success"
+                                          ng-show="project.status=='completed'">Completed</span>
+                                    <span class="label label-default"
+                                          ng-show="project.status=='cancelled'">Cancelled</span>
+                                </td>
+                                <td align="center">
+                                    <input type="text" class="form-control" ng-value="project.started | date:short"
+                                           readonly/>
+                                </td>
+                                <td align="center">
+                                    <input type="text" class="form-control" ng-value="project.deadline | date:short"
+                                           readonly/>
+                                </td>
+                                <td align="center" class="nowrap">
+                                    <a class="rm-background">
+                                        <i class="fa fa-reply fa-2x" aria-hidden="true" ng-click="clearProject()"
+                                           title="Clear Project" aria-label="Clear"></i>
+                                    </a>
+                                    <a class="rm-background">
+                                        <i class="fa fa-check-square fa-3x" ng-click="updateProject(project)"
+                                           title="Update Project" aria-label="Update"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr ng-repeat="currentProject in projects">
+                                <td ng-click="selectProject($index)">
+                                    <a class="rm-ul">{{currentProject.title}}</a>
+                                </td>
+                                <td align="center">
+                                    <a class="rm-ul">
+                                        <span class="label label-danger" ng-show="currentProject.status=='editing'">Editing</span>
+                                        <span class="label label-primary" ng-show="currentProject.status=='published'">Published</span>
+                                        <span class="label label-info" ng-show="currentProject.status=='processing'">Processing</span>
+                                        <span class="label label-success" ng-show="currentProject.status=='completed'">Completed</span>
+                                        <span class="label label-default" ng-show="currentProject.status=='cancelled'">Cancelled</span>
+                                    </a>
+                                </td>
+                                <td align="center">
+                                    <a class="rm-ul">{{currentProject.started | date: short}}</a>
+                                </td>
+                                <td align="center">
+                                    <a class="rm-ul">{{currentProject.deadline | date: short}}</a>
+                                </td>
+                                <td align="center" class="nowrap">
+                                    <a class="rm-background">
+                                        <i class="fa fa-remove fa-3x" ng-click="deleteProject($index)"
+                                           title="Delete Project" aria-label="Remove"></i>
+                                    </a>
+                                    <a class="rm-background">
+                                        <i class="fa fa-pencil-square fa-3x" ng-click="selectProject($index)"
+                                           title="Select Project" aria-label="Select"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <label ng-show="tips" class="btn-block form-control td-border tips-danger">{{tips}}</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

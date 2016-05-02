@@ -1,0 +1,55 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="panel widget light-widget">
+        <div class="panel-heading no-title"></div>
+        <form class="form-horizontal" action="#" role="form">
+            <div class="panel-body">
+                <h2 class="mgbt-xs-20"> Account</h2>
+                <label ng-show="tip24" class="btn-block form-control td-border tips-success">{{tip24}}</label>
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="mgbt-xs-15">Account Type</h3>
+                        <div class="form-group">
+                            <label class="col-sm-12">I'm looking to:</label><br/>
+                            <div class="col-sm-12 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-12">
+                                        <span class="vd_radio radio-info">
+                                            <input ng-model="user.type" type="radio" value="freelancer"
+                                                   id="inputGender1" name="type">
+                                            <label for="inputGender1"> Work </label>
+                                        </span>
+                                        <span class="vd_radio  radio-info">
+                                            <input ng-model="user.type" type="radio" value="employer"
+                                                   id="inputGender2" name="type">
+                                            <label for="inputGender2"> Hire </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr/>
+                        <h3 class="mgbt-xs-15">Close Account</h3>
+                        <div class="form-group">
+                            <div class="col-sm-12  controls">
+                                <a class="btn btn-default vd_btn vd_bg-red" ng-click="close()">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-fw fa-close"></i>
+                                    </span> Close My Account
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pd-20">
+                <a type="submit" class="btn btn-block vd_btn vd_bg-blue" ng-click="update(user)">
+                    <span class="menu-icon">
+                    <i class="fa fa-fw fa-check"></i></span> Save Settings
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+

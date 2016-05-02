@@ -1,0 +1,156 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="panel widget light-widget">
+        <div class="panel-heading no-title"></div>
+        <form class="form-horizontal" action="#" role="form">
+            <div class="panel-body">
+                <h1>Project: {{project.title}}</h1>
+                <ul class="nav nav-tabs">
+                    <li><a href="#/project/{{user._id}}">My Projects</a></li>
+                    <li class="active"><a href="#/details/{{project._id}}" ng-class="linkStyle">Project Details</a></li>
+                    <li><a href="#/application/{{project._id}}"
+                           ng-style="{linkStyle : project.status!='published'}">Job Applications</a></li>
+                </ul>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <div class="form-group" ng-model="project">
+                        <label ng-show="tipSuccess" class="btn-block form-control td-border tips-success">
+                            {{tipSuccess}}</label>
+                        <label ng-show="tipBanned" class="btn-block form-control td-border tips-danger">
+                            {{tipBanned}}</label>
+                        <h3>
+                            <span class="fa-stack fa-lg">
+                                 <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
+                                 <i class="fa fa-inverse fa-stack-1x">1</i>
+                            </span>
+                            What type of work do you require?</h3>
+                        <div class="form-group" align="center">
+                            <select ng-model="project.type" ng-value="project.type" class="form-control"
+                                    ng-readonly="project.status!='editing'">
+                                <option value="Websites IT & Software">
+                                    Websites IT &amp; Software
+                                </option>
+                                <option value="Mobile">
+                                    Mobile
+                                </option>
+                                <option value="Writing">
+                                    Writing
+                                </option>
+                                <option value="Design">
+                                    Design
+                                </option>
+                                <option value="Date Entry">
+                                    Data Entry
+                                </option>
+                                <option value="Product Sourcing & Manufacturing">
+                                    Product Sourcing &amp; Manufacturing
+                                </option>
+                                <option value="Sales & Marketing">
+                                    Sales &amp; Marketing
+                                </option>
+                                <option value="Business, Accounting & Legal">
+                                    Business, Accounting &amp; Legal
+                                </option>
+                                <option value="Local Jobs & Services">
+                                    Local Jobs &amp; Services
+                                </option>
+                            </select>
+                            <h5 ng-show="tip16" class="tips txt-left">{{tip16}}</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h3>
+                            <span class="fa-stack fa-lg">
+                                 <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
+                                 <i class="fa fa-inverse fa-stack-1x">2</i>
+                            </span>
+                            What is your project about?</h3>
+                        <div class="form-group">
+                            <label class="txt-normal">PROJECT TITLE:</label>
+                            <input class="form-control" ng-model="project.title" ng-value="project.title"
+                                   placeholder="e.g. Build a website" ng-readonly="project.status!='editing'">
+                            <h5 ng-show="tip17" class="tips txt-left">{{tip17}}</h5>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h3>
+                            <span class="fa-stack fa-lg">
+                                 <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
+                                 <i class="fa fa-inverse fa-stack-1x">3</i>
+                            </span>
+                            Tell us more about your project.</h3>
+                        <div class="form-group">
+                            <label class="txt-normal">WHAT SKILLS ARE REQUIRED:</label>
+                            <input class="form-control" ng-model="project.skills" ng-value="project.skills"
+                                   placeholder="e.g. Java, MySQL, PHP, ..." ng-readonly="project.status!='editing'">
+                            <h5 ng-show="tip18" class="tips txt-left">{{tip18}}</h5>
+                            <br/>
+                            <label class="txt-normal">DESCRIPTION:</label>
+                                <textarea class="form-control ta-disabled" ng-model="project.description"
+                                          rows="5" ng-value="project.description"
+                                          ng-readonly="project.status!='editing'"
+                                          placeholder="Description your project here ..."></textarea>
+                            <h5 ng-show="tip19" class="tips txt-left">{{tip19}}</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <h3>
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
+                                        <i class="fa fa-inverse fa-stack-1x">4</i>
+                                    </span>
+                                What budget do you have in mind?.</h3>
+                        </div>
+                        <div class="form-group">
+                            <label class="txt-normal">MINIMUM BUDGET(USD/hr):</label>
+                            <input class="form-control" min="2" type="number"
+                                   ng-readonly="project.status!='editing'"
+                                   ng-model="project.min" ng-value="project.min">
+                            <h5 ng-show="tip20" class="tips txt-left">{{tip20}}</h5>
+                            <br/>
+                            <label class="txt-normal">MAXIMUM BUDGET(USD/hr):</label>
+                            <input class="form-control" max="1000" min="2" type="number"
+                                   ng-readonly="project.status!='editing'"
+                                   ng-model="project.max" ng-value="project.max">
+                            <h5 ng-show="tip21" class="tips txt-left">{{tip21}}</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <h3>
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
+                                        <i class="fa fa-inverse fa-stack-1x">5</i>
+                                    </span>
+                                When do you want to process the project?</h3>
+                        </div>
+                        <div class="form-group">
+                            <label class="txt-normal">PROJECT START FROM:</label>
+                            <input class="form-control" type="date" min="{{date | date:'yyyy-MM-dd'}}"
+                                   ng-readonly="project.status!='editing'"
+                                   ng-model="project.started" ng-value="project.started">
+                            <h5 ng-show="tip22" class="tips txt-left">{{tip22}}</h5>
+                            <br/>
+                            <label class="txt-normal">PROJECT DEADLINE:</label>
+                            <input class="form-control" type="date" min="{{date | date:'yyyy-MM-dd'}}"
+                                   ng-readonly="project.status!='editing'"
+                                   ng-model="project.deadline" ng-value="project.deadline">
+                            <h5 ng-show="tip23" class="tips txt-left">{{tip23}}</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <a type="submit" class="btn btn-info" ng-click="updateProject(project)">
+                                <span class="menu-icon">
+                                <i class="fa fa-fw fa-check"></i></span> Update Project
+                        </a>
+                        <a type="submit" class="btn btn-primary" ng-click="postProject(project)">
+                                <span class="menu-icon">
+                                <i class="fa fa-fw fa-check"></i></span> Post Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

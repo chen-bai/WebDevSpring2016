@@ -1,0 +1,94 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="panel widget light-widget">
+        <div class="panel-heading no-title"></div>
+        <form class="form-horizontal" action="#" role="form">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3 mgbt-xs-20">
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-img text-center mgbt-xs-15"
+                                     ng-show="!user.photo">
+                                    <img alt="example image" ng-src="{{photo}}"></div>
+                                <div class="form-img text-center mgbt-xs-15"
+                                     ng-show="user.photo">
+                                    <img alt="example image" ng-src="{{user.photo}}"/>
+                                </div>
+                                <br/>
+                                <p class="txt-center size-sm">
+                                    &copy;{{user.username}}
+                                </p>
+                                <p class="txt-center size-sm">
+                                    Status
+                                    <span ng-show="user.status==='active'"
+                                          class="label label-success">Active</span>
+                                    <span ng-show="user.status==='offline'"
+                                          class="label label-danger">Offline</span>
+                                </p>
+                                <p class="txt-center size-sm">Member since {{user.started | date:short}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="form-group">
+                            <h1 ng-class="{'txt-area-bg':mode1=='edit'}" ng-show="mode1!='editing'"
+                                ng-click="changeStatus1()">
+                                {{user.displayName}}<i class="fa fa-pencil pull-right" ng-show="mode1=='edit'"></i>
+                            </h1>
+                            <textarea maxlength="25" rows="1" class="form-control h1-area ta-disabled"
+                                      ng-show="mode1 =='editing'" ng-model="user.displayName"
+                                      placeholder="Enter your Display Name">{{user.displayName}}
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <h2 ng-class="{'txt-area-bg':mode2=='edit'}" ng-show="mode2!='editing'"
+                                ng-click="changeStatus2()">
+                                {{user.headline}}<i class="fa fa-pencil pull-right" ng-show="mode2=='edit'"></i>
+                            </h2>
+                            <textarea maxlength="50" rows="1" class="form-control h2-area ta-disabled"
+                                      ng-show="mode2 =='editing'" ng-model="user.headline"
+                                      placeholder="Professional Headline - e.g. Graphic Designer">{{user.headline}}
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <h3 ng-class="{'txt-area-bg':mode3=='edit'}" ng-show="mode3!='editing'"
+                                ng-click="changeStatus3()">
+                                {{user.description}}<i class="fa fa-pencil pull-right" ng-show="mode3=='edit'"></i>
+                            </h3>
+                            <textarea maxlength="1000" rows="15" class="form-control h3-area ta-disabled"
+                                      ng-show="mode3 =='editing'" ng-model="user.description"
+                                      placeholder="Tell us a bit about yourself">{{user.description}}
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-img-action text-center mgbt-xs-20">
+                                    <span class="btn btn-primary btn-block"
+                                          ng-click="changeStatus(user)">
+                                        <i class="fa fa-pencil" ng-show="mode==='edit'"></i>
+                                        <i class="fa fa-user" ng-show="mode==='view'"></i>
+                                        {{btnText}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <i class="fa fa-usd fa-2x pull-left"></i>
+                                <h3 ng-class="{'txt-area-bg':mode4=='edit'}" ng-show="mode4!='editing'"
+                                    ng-click="changeStatus4()" class="h3-fw">{{user.charge}}
+                                    <i class="fa fa-pencil pull-right" ng-show="mode4==='edit'"></i>
+                                </h3><label class="txt-normal label-df" ng-show="mode4!='editing'">USD/hr</label>
+
+                                <input class="form-control h3-fw" min="2" max="1000" type="number"
+                                       ng-show="mode4=='editing'" ng-model="user.charge">
+                                    <label class="txt-normal label-df" ng-show="mode4=='editing'">USD/hr</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

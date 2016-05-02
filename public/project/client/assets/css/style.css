@@ -1,0 +1,369 @@
+/*
+ * Logo Size
+ */
+.logo-size {
+    width: 200px;
+}
+
+.logo-sm-size {
+    width: 150px;
+}
+
+/*
+ * Remove brand top and bottom padding
+ */
+.brand {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/*
+ * Add padding top on nav
+ */
+.nav-lower {
+    padding-top: 15px;
+}
+
+/*
+ * Slogan Format
+ */
+.slogan {
+    font-size: 4em;
+}
+
+/*
+ * Resize slogan
+ */
+@media only screen and (max-width: 768px) {
+    .font-1 {
+        font-size: 2em;
+    }
+}
+
+/*
+ * New button
+ */
+.btn-new {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 2em;
+    width: 12em;
+    background-color: transparent;
+    color: white;
+}
+
+/*
+ * Sets base style for each page
+ */
+
+/*html,*/
+/*body {*/
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
+    /*!*background-image: url(../img/cool-background.jpg);*!*/
+/*}*/
+
+/*
+ * Label text alignment
+ */
+.label-black {
+    color: #666666;
+}
+
+@media (min-width: 768px) {
+    .ckb-left {
+        text-align: left;
+    }
+}
+
+@media (max-height: 40em) and (min-width: 768px) {
+    .vertical-centering {
+        margin: 15em auto 0;
+    }
+}
+
+/*
+ * Draw a separator line
+ */
+.separator {
+    margin-top: 1em;
+    border-top: 1px solid #cccccc !important;
+}
+
+/*
+ * Font
+ */
+.font-black {
+    color: #666666;
+    font-weight: 400;
+    font-size: small;
+    margin-right: 1em;
+}
+
+.font-blue {
+    color: dodgerblue;
+    font-weight: 400;
+    font-size: small;
+    margin-left: 1em;
+}
+
+/*
+ * Label text alignment
+ */
+.txt-just {
+    color: #666666;
+    text-align: right;
+}
+
+/*
+ * Normal text
+ */
+.txt-normal {
+    font-style: normal !important;
+    font-weight: normal !important;
+}
+
+/*
+ * Text size xx-large
+ */
+.size-xx {
+    font-size: xx-large;
+}
+
+/*
+ * Text size small
+ */
+.size-sm {
+    font-size: small;
+}
+
+/*
+ * Header style
+ */
+.header-style {
+    background-color: white;
+    border-bottom: 1px solid #cccccc;
+}
+
+/*
+ * Text size x-large
+ */
+.size-x {
+    font-size: x-large;
+}
+
+/*
+ * table data width
+ */
+.td-width {
+    width: 60%;
+}
+
+/*
+ * Tips
+ */
+.tips {
+    color: red;
+}
+
+/*
+ * table no line
+ */
+.tb-block {
+    display: block;
+}
+
+/*
+ * Txt align center
+ */
+.txt-center {
+    text-align: center;
+}
+
+/*
+ * Txt align left
+ */
+.txt-left {
+    text-align: left;
+}
+
+/*
+ * h1-area
+ */
+.h1-area {
+    height: 3em;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+/*
+ * h2-area
+ */
+.h2-area {
+    height: 3em;
+    font-size: large;
+}
+
+/*
+ * h3-area
+ */
+.h3-area {
+    font-size: medium;
+}
+
+/*
+ * Textarea disable resizable
+ */
+.ta-disabled {
+    resize: none;
+}
+
+/*
+ * Change backgroung color when mouse moving over
+ */
+.txt-area-bg:hover {
+    background-color: #cccccc;
+}
+
+/*
+ * Input width
+ */
+.input-width {
+    width: 4em;
+}
+
+/*
+ * label down and float
+ */
+.label-df {
+    float:left;
+    padding-top: 5px;
+}
+
+/*
+ * Unordered list without Bullets
+ */
+.ul-no-bullet {
+    list-style-type:none;
+}
+
+/*
+ * h3 float and width
+ */
+.h3-fw {
+    float:left;
+    max-width: 5em;
+}
+
+/*
+ * fa lightskyblue
+ */
+.fa-color-lkb {
+    color: lightskyblue;
+}
+
+/*
+ * float left
+ */
+.float-left {
+    float:left;
+}
+
+/*
+ * dollar symbol in input
+ */
+.currencyinput {
+    border: 1px inset #ccc;
+}
+.currencyinput input {
+    border: 0;
+}
+
+/*
+ * Remove underline of link
+ */
+.rm-ul {
+    text-decoration: none !important;
+    color: black;
+}
+
+/*
+ * Remove background
+ */
+.rm-background {
+    background: none;
+    color: black;
+}
+
+/*
+ * Disabled style
+ */
+.linkDisabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: grey;
+}
+
+/*
+ * Remove td border
+ */
+.td-border {
+    border: none !important;
+}
+
+/*
+ * Draw a separator line
+ */
+.separator {
+    border-top: 1px solid black !important;
+}
+
+/*
+ * Locate icon at the middle of td
+ */
+.td-mid {
+    text-align: center;
+    vertical-align: middle !important;
+    /*padding-top: 35px !important;*/
+}
+
+/*
+ * tips success
+ */
+.tips-success {
+    background-color: lightgreen;
+    color:white;
+}
+
+/*
+ * tips info
+ */
+.tips-info {
+    background-color: lightsalmon;
+    color:white;
+}
+
+/*
+ * tips danger
+ */
+.tips-danger {
+    background-color: red;
+    color:white;
+}
+
+/*
+ * title color
+ */
+.title-white{
+    color: white !important;
+}
+
+/*
+ * small image
+ */
+.img-sm{
+    height:5em;
+    width:5em;
+}

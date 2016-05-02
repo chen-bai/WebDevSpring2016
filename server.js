@@ -24,7 +24,9 @@ app.use(express.static(__dirname + '/public'));
  res.send('hello world');
  });*/
 
-var connectionString = 'mongodb://localhost/FormBuilderDB';
+//var connectionString = 'mongodb://localhost/FormBuilderDB';
+var connectionString = 'mongodb://localhost/ChanceDB';
+
 //var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/FormBuilderDB';
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
     connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -39,6 +41,8 @@ var db = mongoose.connect(connectionString);
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
-require("./public/assignment/server/app.js")(app, db, mongoose);
+//require("./public/assignment/server/app.js")(app, db, mongoose);
+
+require("./public/project/server/app.js")(app, db, mongoose);
 
 app.listen(port, ipaddress);

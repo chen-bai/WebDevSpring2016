@@ -1,0 +1,90 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="panel widget light-widget">
+        <div class="panel-heading no-title"></div>
+        <form class="form-horizontal" action="#" role="form">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel widget">
+                            <label ng-show="tip25" class="btn-block form-control td-border tips-success">{{tip25}}</label>
+                            <label ng-show="tip26" class="btn-block form-control td-border tips-danger">{{tip26}}</label>
+                            <div class="panel-heading vd_bg-grey">
+                                <h3 class="panel-title title-white"><span class="menu-icon">
+                                    <i class="fa fa-dot-circle-o"></i></span> Find Jobs</h3>
+                            </div>
+                            <div class="panel-body table-responsive">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th ng-click="sort('title', jtOrder)">
+                                            <span class="menu-icon">
+                                                <i ng-class="{'fa fa-unsorted': jtOrder==0,
+                                                'fa fa-sort-asc':jtOrder==1,
+                                                'fa fa-sort-desc':jtOrder==-1}"></i> Project Title</span></th>
+                                        <th ng-click="sort('directory', dirOrder)">
+                                            <span class="menu-icon">
+                                                <i ng-class="{'fa fa-unsorted': dirOrder==0,
+                                                'fa fa-sort-asc':dirOrder==1,
+                                                'fa fa-sort-desc':dirOrder==-1}"></i> Directory</span></th>
+                                        <th class="txt-center" ng-click="sort('start', stOrder)">
+                                            <span class="menu-icon">
+                                                <i ng-class="{'fa fa-unsorted': stOrder==0,
+                                                'fa fa-sort-asc':stOrder==1,
+                                                'fa fa-sort-desc':stOrder==-1}"></i> Start</span></th>
+                                        <th class="txt-center" ng-click="sort('end', endOrder)">
+                                            <span class="menu-icon">
+                                                <i ng-class="{'fa fa-unsorted': endOrder==0,
+                                                'fa fa-sort-asc':endOrder==1,
+                                                'fa fa-sort-desc':endOrder==-1}"></i> End</span></th>
+                                        <th class="txt-center" ng-click="sort('min', minOrder)">
+                                            <span class="menu-icon">
+                                                <i ng-class="{'fa fa-unsorted': minOrder==0,
+                                                'fa fa-sort-asc':minOrder==1,
+                                                'fa fa-sort-desc':minOrder==-1}"></i> Min Rate</span></th>
+                                        <th class="txt-center" ng-click="sort('max', maxOrder)">
+                                            <span class="menu-icon">
+                                                <i ng-class="{'fa fa-unsorted': maxOrder==0,
+                                                'fa fa-sort-asc':maxOrder==1,
+                                                'fa fa-sort-desc':maxOrder==-1}"></i> Max Rate</span></th>
+                                        <th class="txt-center">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="job in jobs">
+                                        <td>{{job.title}}</td>
+                                        <td>{{job.type}}</td>
+                                        <td class="txt-center">{{job.started | date : short}}</td>
+                                        <td class="txt-center">{{job.deadline | date : short}}</td>
+                                        <td class="txt-center">${{job.min}}</td>
+                                        <td class="txt-center">${{job.max}}</td>
+                                        <td class="menu-action txt-center">
+                                            <!--<a data-original-title="view" data-toggle="tooltip"-->
+                                                                   <!--data-placement="top"-->
+                                                                   <!--class="btn menu-icon vd_bd-green vd_green"> <i-->
+                                                <!--class="fa fa-eye"></i> </a>-->
+                                            <a data-original-title="apply"
+                                               data-toggle="tooltip"
+                                               data-placement="top" ng-click="apply(job)"
+                                               class="btn menu-icon vd_bd-yellow vd_yellow">
+                                            <i class="fa fa-check"></i> </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!--<ul class="pagination">-->
+                                    <!--<li><a href="#">&laquo;</a></li>-->
+                                    <!--<li class="active"><a href="#">1</a></li>-->
+                                    <!--<li><a href="#">2</a></li>-->
+                                    <!--<li><a href="#">3</a></li>-->
+                                    <!--<li><a href="#">4</a></li>-->
+                                    <!--<li><a href="#">5</a></li>-->
+                                    <!--<li><a href="#">&raquo;</a></li>-->
+                                <!--</ul>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
