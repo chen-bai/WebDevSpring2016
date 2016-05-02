@@ -7,7 +7,7 @@
         $rootScope.logout = logout;
         $rootScope.imageSource = getImageSource;
         $rootScope.txtColor = getTxtColor;
-        $rootScope.getLink = getLink;
+        getLink();
         $rootScope.logout = logout;
 
 

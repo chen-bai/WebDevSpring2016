@@ -10,8 +10,7 @@
                     <a href="#/signup" ng-style="{'color': txtColor}">Sign Up</a>
                 </li>
                 <li ng-hide="user.type=='freelancer'">
-                    <a ng-href="{{link}}" ng-click="getLink()"
-                       ng-style="{'color': txtColor}">Post a Project</a>
+                    <a ng-href="{{link}}" ng-style="{'color': txtColor}">Post a Project</a>
                 </li>
                 <li ng-show="user">
                     <a href="#/home" ng-style="{'color': txtColor}" ng-click="logout()">Logout</a>
