@@ -22,7 +22,7 @@ module.exports = function(mongoose){
         twitter: String,
         status: {type: String, default: 'active'},
         started: {type:Date, default: Date.now}
-    }, {collection: 'chancer'});
+    }, {collection: 'chance.user'});
 
     return UserSchema;
 };
