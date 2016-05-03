@@ -141,6 +141,7 @@ module.exports = function (app, userModel) {
             .then(
                 function (user) {
                     if (user) {
+                        console.log(user);
                         userModel.findById(userId)
                             .then(
                                 function (users) {
