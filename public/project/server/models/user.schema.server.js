@@ -1,5 +1,5 @@
 module.exports = function(mongoose){
-    var ChancerSchema = new mongoose.Schema({
+    var UserSchema = new mongoose.Schema({
         username: String,
         password: String,
         email: String,
@@ -22,7 +22,7 @@ module.exports = function(mongoose){
         twitter: String,
         status: {type: String, default: 'active'},
         started: {type:Date, default: Date.now}
-    }, {collection: 'chancer'});
+    }, {collection: 'chance.user'});
 
-    return ChancerSchema;
+    return UserSchema;
 };

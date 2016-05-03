@@ -34,19 +34,19 @@ module.exports = function (db, mongoose) {
     }
 
     function create(user) {
-        return ChancerModel.create(user);
+        return UserModel.create(user);
     }
 
     function remove(userId, callback) {
-        ChancerModel.remove({_id: userId}, callback);
+        UserModel.remove({_id: userId}, callback);
     }
 
     function findAndUpdate(userId, status){
-        return ChancerModel.findOneAndUpdate({_id:userId},{status: status});
+        return UserModel.findOneAndUpdate({_id:userId},{status: status});
     }
 
     function update(userId, user) {
-        return ChancerModel.findOneAndUpdate({_id: userId}, {
+        return UserModel.findOneAndUpdate({_id: userId}, {
             _id: user._id,
             username: user.username,
             password: user.password,
