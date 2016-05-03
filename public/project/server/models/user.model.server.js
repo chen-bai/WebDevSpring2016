@@ -1,8 +1,8 @@
 //var users = require("./user.mock.json");
 
 module.exports = function (db, mongoose) {
-    var ChancerSchema = require("./user.schema.server.js")(mongoose);
-    var ChancerModel = mongoose.model('Chancer', ChancerSchema);
+    var UserSchema = require("./user.schema.server.js")(mongoose);
+    var UserModel = mongoose.model('Chancer', UserSchema);
 
     var api = {
         findAll: findAll,
@@ -18,19 +18,19 @@ module.exports = function (db, mongoose) {
     return api;
 
     function findUserByCredentials(username, password) {
-        return ChancerModel.find({$and: [{username: username}, {password: password}]});
+        return UserModel.find({$and: [{username: username}, {password: password}]});
     }
 
     function findUserByUsername(username) {
-        return ChancerModel.find({username: username});
+        return UserModel.find({username: username});
     }
 
     function findById(userId) {
-        return ChancerModel.findById(userId);
+        return UserModel.findById(userId);
     }
 
     function findAll() {
-        return ChancerModel.find();
+        return UserModel.find();
     }
 
     function create(user) {

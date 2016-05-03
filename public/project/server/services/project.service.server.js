@@ -2,25 +2,25 @@
 
 module.exports = function (app, projectModel) {
     app.get("/api/chance/jobs/:userId",function(req,res){
-       var userId = req.params.userId;
+        var userId = req.params.userId;
         projectModel.findJobs(userId)
             .then(function(jobs){
-                res.json(jobs);
-            },
-            function(err){
-                res.status(400).send(err);
-            });
+                    res.json(jobs);
+                },
+                function(err){
+                    res.status(400).send(err);
+                });
     });
 
     app.get('/api/chance/user/:userId/project', function (req, res) {
         var userId = req.params.userId;
         projectModel.findAllProjectsForUser(userId)
             .then(function(projects){
-                res.json(projects);
-            },
-            function(err){
-                res.status(400).send(err);
-            })
+                    res.json(projects);
+                },
+                function(err){
+                    res.status(400).send(err);
+                })
     });
 
     app.get('/api/chance/user/:userId/processing', function (req, res) {
@@ -39,11 +39,11 @@ module.exports = function (app, projectModel) {
         var projectId = req.params.projectId;
         projectModel.findById(projectId)
             .then(function(project){
-                res.json(project);
-            },
-            function(err){
-                res.status(400).send(err);
-            });
+                    res.json(project);
+                },
+                function(err){
+                    res.status(400).send(err);
+                });
     });
 
     app.delete('/api/chance/user/:userId/project/:projectId', function (req, res) {

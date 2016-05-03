@@ -14,7 +14,7 @@ module.exports = function(mongoose){
         started: {type: Date, default: Date.now},
         deadline: {type: Date, default: Date.now},
         applications: [AppSchema]
-    }, {collection: 'chance.project'});
+    }, {collection: 'project'});
 
     return ProjectSchema;
 };
