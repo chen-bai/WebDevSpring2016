@@ -1,5 +1,5 @@
 module.exports = function(mongoose){
-    var UserSchema = new mongoose.Schema({
+    var ChancerSchema = new mongoose.Schema({
         username: String,
         password: String,
         email: String,
@@ -24,5 +24,5 @@ module.exports = function(mongoose){
         started: {type:Date, default: Date.now}
     }, {collection: 'chancer'});
 
-    return UserSchema;
+    return ChancerSchema;
 };

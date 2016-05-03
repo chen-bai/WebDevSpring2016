@@ -1,8 +1,8 @@
 //var users = require("./user.mock.json");
 
 module.exports = function (db, mongoose) {
-    var UserSchema = require("./user.schema.server.js")(mongoose);
-    var UserModel = mongoose.model('Chancer', UserSchema);
+    var ChancerSchema = require("./user.schema.server.js")(mongoose);
+    var ChancerModel = mongoose.model('Chancer', ChancerSchema);
 
     var api = {
         findAll: findAll,
@@ -18,35 +18,35 @@ module.exports = function (db, mongoose) {
     return api;
 
     function findUserByCredentials(username, password) {
-        return UserModel.find({$and: [{username: username}, {password: password}]});
+        return ChancerModel.find({$and: [{username: username}, {password: password}]});
     }
 
     function findUserByUsername(username) {
-        return UserModel.find({username: username});
+        return ChancerModel.find({username: username});
     }
 
     function findById(userId) {
-        return UserModel.findById(userId);
+        return ChancerModel.findById(userId);
     }
 
     function findAll() {
-        return UserModel.find();
+        return ChancerModel.find();
     }
 
     function create(user) {
-        return UserModel.create(user);
+        return ChancerModel.create(user);
     }
 
     function remove(userId, callback) {
-        UserModel.remove({_id: userId}, callback);
+        ChancerModel.remove({_id: userId}, callback);
     }
 
     function findAndUpdate(userId, status){
-        return UserModel.findOneAndUpdate({_id:userId},{status: status});
+        return ChancerModel.findOneAndUpdate({_id:userId},{status: status});
     }
 
     function update(userId, user) {
-        return UserModel.findOneAndUpdate({_id: userId}, {
+        return ChancerModel.findOneAndUpdate({_id: userId}, {
             _id: user._id,
             username: user.username,
             password: user.password,
