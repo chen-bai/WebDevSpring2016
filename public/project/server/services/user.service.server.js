@@ -3,7 +3,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function (app, userModel) {
-    passport.use(new LocalStrategy(localStrategy));
+    passport.use('chance', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
@@ -50,9 +50,9 @@ module.exports = function (app, userModel) {
         }
     }
 
-    app.post('/api/chance/login', passport.authenticate('local'), function (req, res) {
+    app.post('/api/chance/login', passport.authenticate('chance'), function (req, res) {
         var user = req.user;
-        userModel.findAndUpdate(req.user._id, 'active')
+        userModel.loginAndUpdate(user, 'active')
             .then(
                 function (user) {
                     res.json(user);

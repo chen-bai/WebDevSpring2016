@@ -3,7 +3,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function (app, userModel) {
-    passport.use(new LocalStrategy(localStrategy));
+    passport.use('assignment', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
@@ -52,7 +52,7 @@ module.exports = function (app, userModel) {
         }
     }
 
-    app.post('/api/assignment/login', passport.authenticate('local'), function (req, res) {
+    app.post('/api/assignment/login', passport.authenticate('assignment'), function (req, res) {
         var user = req.user;
         res.json(user);
     });

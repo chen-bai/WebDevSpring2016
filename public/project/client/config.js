@@ -125,7 +125,8 @@
                 // User is Not Authenticated
                 else
                 {
-                    $rootScope.errorMessage = 'You need to log in.';
+                    $rootScope.errorMessage = '* You need to log in.';
+                    $rootScope.currentUser = null;
                     deferred.reject();
                     $location.url('/login');
                 }
@@ -140,7 +141,6 @@
 
         $http.get('/api/chance/loggedin')
             .success(function(user) {
-                $rootScope.errorMessage = null;
                 // User is Authenticated
                 if (user !== '0')
                 {

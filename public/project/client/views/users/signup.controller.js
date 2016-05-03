@@ -4,10 +4,15 @@
         .controller("SignUpController", SignUpController);
 
     function SignUpController($rootScope, $location, UserService) {
-        $rootScope.txtColor = '#555555';
-        $rootScope.imageSource = 'assets/img/black%20logo.png';
-        $rootScope.templateStyle = "assets/css/cover.css";
-        $rootScope.signUp = signUp;
+        function init() {
+            $rootScope.txtColor = '#555555';
+            $rootScope.imageSource = 'assets/img/black%20logo.png';
+            $rootScope.templateStyle = "assets/css/cover.css";
+            $rootScope.signUp = signUp;
+            $rootScope.tips=null;
+            $rootScope.errorMessage = null;
+        }
+        init();
 
         function signUp(user) {
             if (!user) {

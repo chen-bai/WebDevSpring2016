@@ -12,13 +12,20 @@ module.exports = function (db, mongoose) {
         remove: remove,
         update: update,
         findUserByUsername: findUserByUsername,
-        findUserByCredentials: findUserByCredentials
+        findUserByCredentials: findUserByCredentials,
+        loginAndUpdate: loginAndUpdate
     };
 
     return api;
 
     function findUserByCredentials(username, password) {
         return UserModel.find({$and: [{username: username}, {password: password}]});
+    }
+
+    function loginAndUpdate(user, status) {
+        return UserModel.findOneAndUpdate(
+            {$and: [{username: user.username}, {password: user.password}]},
+            {status: status});
     }
 
     function findUserByUsername(username) {
@@ -41,8 +48,8 @@ module.exports = function (db, mongoose) {
         UserModel.remove({_id: userId}, callback);
     }
 
-    function findAndUpdate(userId, status){
-        return UserModel.findOneAndUpdate({_id:userId},{status: status});
+    function findAndUpdate(userId, status) {
+        return UserModel.findOneAndUpdate({_id: userId}, {status: status});
     }
 
     function update(userId, user) {

@@ -8,6 +8,7 @@
             $rootScope.txtColor = 'white';
             $rootScope.imageSource = 'assets/img/logo.png';
             $rootScope.templateStyle = "assets/css/cover.css";
+            $rootScope.errorMessage = null;
         }
         init();
 
