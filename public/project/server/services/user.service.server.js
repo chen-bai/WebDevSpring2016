@@ -140,17 +140,17 @@ module.exports = function (app, userModel) {
         userModel.update(userId, req.body)
             .then(
                 function (user) {
-                    if (user) {
-                        console.log(user);
-                        userModel.findById(userId)
-                            .then(
-                                function (users) {
-                                    res.json(users);
-                                },
-                                function (err) {
-                                    res.status(400).send(err);
-                                });
-                    }
+                    res.json(user);
+                    //if (user) {
+                    //    userModel.findById(userId)
+                    //        .then(
+                    //            function (users) {
+                    //                res.json(users);
+                    //            },
+                    //            function (err) {
+                    //                res.status(400).send(err);
+                    //            });
+                    //}
                 },
                 function (err) {
                     res.status(400).send(err);
