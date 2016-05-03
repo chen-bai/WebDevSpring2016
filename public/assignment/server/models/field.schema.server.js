@@ -6,7 +6,7 @@ module.exports = function(mongoose){
             default: 'TEXT'},
         placeholder: String,
         options: [{label: String, value: String}]
-    }, {collection: 'field'});
+    }, {collection: 'assignment.field'});
 
     return FieldSchema;
 };
