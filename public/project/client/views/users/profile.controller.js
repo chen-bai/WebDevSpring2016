@@ -122,7 +122,8 @@
                 UserService.updateUser(user._id, newUser)
                     .then(function (response) {
                         $rootScope.user = response.data;
-                        $rootScope.tips="* Your profile updated successfully!";
+                        $rootScope.tips = response.data.username;
+                        //$rootScope.tips="* Your profile updated successfully!";
                         $location.url("/profile/" + response.data._id);
                     });
             }else{
