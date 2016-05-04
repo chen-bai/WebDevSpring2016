@@ -1,13 +1,13 @@
 //var uuid = require('node-uuid');
 
 module.exports = function (app, projectModel) {
-    app.get("/api/chance/jobs/:userId",function(req,res){
+    app.get("/api/chance/jobs/:userId", function (req, res) {
         var userId = req.params.userId;
         projectModel.findJobs(userId)
-            .then(function(jobs){
+            .then(function (jobs) {
                     res.json(jobs);
                 },
-                function(err){
+                function (err) {
                     res.status(400).send(err);
                 });
     });
@@ -15,10 +15,10 @@ module.exports = function (app, projectModel) {
     app.get('/api/chance/user/:userId/project', function (req, res) {
         var userId = req.params.userId;
         projectModel.findAllProjectsForUser(userId)
-            .then(function(projects){
+            .then(function (projects) {
                     res.json(projects);
                 },
-                function(err){
+                function (err) {
                     res.status(400).send(err);
                 })
     });
@@ -30,7 +30,7 @@ module.exports = function (app, projectModel) {
                 function (project) {
                     res.json(project);
                 },
-                function(err) {
+                function (err) {
                     res.status(400).send(err);
                 });
     });
@@ -38,10 +38,10 @@ module.exports = function (app, projectModel) {
     app.get('/api/chance/project/:projectId', function (req, res) {
         var projectId = req.params.projectId;
         projectModel.findById(projectId)
-            .then(function(project){
+            .then(function (project) {
                     res.json(project);
                 },
-                function(err){
+                function (err) {
                     res.status(400).send(err);
                 });
     });
@@ -88,13 +88,16 @@ module.exports = function (app, projectModel) {
         var projectId = req.params.projectId;
         var userId = req.params.userId;
         projectModel.update(projectId, project)
-            .then(function (project) {
-                    res.json(project);
-                }, function (err) {
-                    res.status(400).send(err);
-                },
-                function (err) {
-                    res.status(400).send(err);
-                });
+            .then(function (response) {
+                projectModel.findById(projectId)
+                    .then(function (project) {
+                            res.json(project);
+                        },
+                        function (err) {
+                            res.status(400).send(err);
+                        });
+            }, function (err) {
+                res.status(400).send(err);
+            });
     });
 };

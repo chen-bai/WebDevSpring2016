@@ -23,7 +23,21 @@
             $rootScope.project.status = 'processing';
             ProjectService.updateProjectById($rootScope.user._id, $rootScope.project._id, $rootScope.project)
                 .then(function(response){
-                    $rootScope.project = response.data;
+                    $rootScope.project = {
+                        _id: response.data._id,
+                        userId: response.data.userId,
+                        freelancerId: response.data.freelancerId,
+                        title: response.data.title,
+                        type: response.data.type,
+                        description: response.data.description,
+                        skills: response.data.toString(),
+                        min: response.data.min,
+                        max: response.data.max,
+                        status: response.data.status,
+                        started: new Date(response.data.started),
+                        deadline: new Date(response.data.deadline),
+                        applications: response.data.applications
+                    }
                     $location.url("/project/"+$rootScope.user._id);
                 })
         }

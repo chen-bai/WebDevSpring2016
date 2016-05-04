@@ -139,8 +139,8 @@
                             <h5 ng-show="tip22" class="tips txt-left">{{tip22}}</h5>
                             <br/>
                             <label class="txt-normal">PROJECT DEADLINE:</label>
-                            <input class="form-control" type="date" min="{{date | date:'yyyy-MM-dd'}}"
-                                   ng-readonly="project.status!='editing'"
+                            <input class="form-control" type="date"
+                                   ng-readonly="project.status!='editing'" min="{{date | date:'yyyy-MM-dd'}}"
                                    ng-model="project.deadline" ng-value="project.deadline">
                             <h5 ng-show="tip23" class="tips txt-left">{{tip23}}</h5>
                         </div>

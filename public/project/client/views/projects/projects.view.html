@@ -60,12 +60,14 @@
                                           ng-show="project.status=='cancelled'">Cancelled</span>
                                 </td>
                                 <td align="center">
-                                    <input type="text" class="form-control" ng-value="project.started | date:short"
-                                           readonly/>
+                                    <input class="form-control" type="date" min="{{date | date:'yyyy-MM-dd'}}"
+                                           ng-readonly="project.status!='editing'"
+                                           ng-model="project.started" ng-value="project.started">
                                 </td>
                                 <td align="center">
-                                    <input type="text" class="form-control" ng-value="project.deadline | date:short"
-                                           readonly/>
+                                    <input class="form-control" type="date"
+                                           ng-readonly="project.status!='editing'" min="{{date | date:'yyyy-MM-dd'}}"
+                                           ng-model="project.deadline" ng-value="project.deadline">
                                 </td>
                                 <td align="center" class="nowrap">
                                     <a class="rm-background">

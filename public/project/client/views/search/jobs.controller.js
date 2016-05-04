@@ -33,7 +33,6 @@
                 $rootScope.tips = null;
                 ProjectService.updateProjectById(job.userId, job._id, job)
                     .then(function (response) {
-                        console.log(222);
                         $rootScope.tip25 = "* Your application has been sent successfully!";
                         $rootScope.tip26 = null;
                     })

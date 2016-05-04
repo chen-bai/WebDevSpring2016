@@ -101,7 +101,21 @@
                         project.applications = [];
                         ProjectService.updateProjectById($rootScope.user._id, project._id, project)
                             .then(function (response) {
-                                $rootScope.project = response.data;
+                                $rootScope.project = {
+                                    _id: response.data._id,
+                                    userId: response.data.userId,
+                                    freelancerId: response.data.freelancerId,
+                                    title: response.data.title,
+                                    type: response.data.type,
+                                    description: response.data.description,
+                                    skills: response.data.toString(),
+                                    min: response.data.min,
+                                    max: response.data.max,
+                                    status: response.data.status,
+                                    started: new Date(response.data.started),
+                                    deadline: new Date(response.data.deadline),
+                                    applications: response.data.applications
+                                }
                                 $rootScope.tipSuccess = "* Your project posted successfully!";
                                 $rootScope.tipBanned = null;
                             });
@@ -187,7 +201,21 @@
                         project.applications = [];
                         ProjectService.updateProjectById($rootScope.user._id, project._id, project)
                             .then(function (response) {
-                                $rootScope.project = response.data;
+                                $rootScope.project = {
+                                    _id: response.data._id,
+                                    userId: response.data.userId,
+                                    freelancerId: response.data.freelancerId,
+                                    title: response.data.title,
+                                    type: response.data.type,
+                                    description: response.data.description,
+                                    skills: response.data.toString(),
+                                    min: response.data.min,
+                                    max: response.data.max,
+                                    status: response.data.status,
+                                    started: new Date(response.data.started),
+                                    deadline: new Date(response.data.deadline),
+                                    applications: response.data.applications
+                                };
                                 $rootScope.tipSuccess = "* Your project updated successfully!";
                                 $rootScope.tipBanned = null;
                             });

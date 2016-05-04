@@ -12,6 +12,7 @@
             $rootScope.titleOrder = 0;
             $rootScope.deadlineOrder = 0;
             $rootScope.startedOrder = 0;
+            $rootScope.date = new Date();
             $rootScope.tips = null;
         }
         init();
@@ -139,28 +140,35 @@
 
         function updateProject(project) {
             if (selectedProjectIndex >= 0 && project.status == 'editing') {
-                var newProject = {
-                    _id: project._id,
-                    userId: userId,
-                    freelancerId: null,
-                    title: project.title,
-                    type: null,
-                    description: null,
-                    skills: null,
-                    min: null,
-                    max: null,
-                    status: project.status,
-                    started: project.started,
-                    deadline: project.deadline,
-                    applications: project.applications
-                };
-                ProjectService.updateProjectById(userId, newProject._id, newProject)
-                    .then(function (response) {
-                        $rootScope.projects = response.data;
-                        $rootScope.project = {};
-                        $rootScope.tips = null;
-                        $rootScope.linkStyle = "linkDisabled";
-                    })
+                if(project.started >= project.deadline){
+                    $rootScope.tips = "* The project start time must be earlier than end time."
+                }else {
+                    var newProject = {
+                        _id: project._id,
+                        userId: userId,
+                        freelancerId: null,
+                        title: project.title,
+                        type: project.type,
+                        description: project.type,
+                        skills: project.skills,
+                        min: project.min,
+                        max: project.max,
+                        status: project.status,
+                        started: project.started,
+                        deadline: project.deadline,
+                        applications: project.applications
+                    };
+                    ProjectService.updateProjectById(userId, newProject._id, newProject)
+                        .then(function (response) {
+                            ProjectService.findAllProjectsForUser(userId)
+                                .then(function (response) {
+                                    $rootScope.projects = response.data;
+                                });
+                            $rootScope.project = {};
+                            $rootScope.tips = null;
+                            $rootScope.linkStyle = "linkDisabled";
+                        })
+                }
             }else{
                 $rootScope.tips = "* Project only can be modified under editing status.";
             }
@@ -174,7 +182,10 @@
                         $rootScope.projects.splice(index, 1);
                         $rootScope.project = {};
                         $rootScope.linkStyle = "linkDisabled";
+                        $rootScope.tips = null;
                     })
+            }else {
+                $rootScope.tips = "* Project cannot be deleted under processing status";
             }
         }
 
