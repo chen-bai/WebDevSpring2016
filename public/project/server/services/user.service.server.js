@@ -1,29 +1,29 @@
 //var uuid = require('node-uuid');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+//var passport = require('passport');
+//var LocalStrategy = require('passport-local').Strategy;
 
-module.exports = function (app, userModel) {
-    passport.use('chance', new LocalStrategy(localStrategy));
+module.exports = function (app, userModel, passport, LocalStrategy) {
+    passport.use('chance', new LocalStrategy(
+        function (username, password, done) {
+            userModel
+                .findUserByCredentials(username, password)
+                .then(
+                    function (users) {
+                        if (!users) {
+                            return done(null, false);
+                        }
+                        return done(null, users[0]);
+                    },
+                    function (err) {
+                        if (err) {
+                            return done(err);
+                        }
+                    }
+                );
+        }));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
-    function localStrategy(username, password, done) {
-        userModel
-            .findUserByCredentials(username, password)
-            .then(
-                function (users) {
-                    if (!users) {
-                        return done(null, false);
-                    }
-                    return done(null, users[0]);
-                },
-                function (err) {
-                    if (err) {
-                        return done(err);
-                    }
-                }
-            );
-    }
 
     function serializeUser(user, done) {
         done(null, user);
@@ -141,16 +141,6 @@ module.exports = function (app, userModel) {
             .then(
                 function (user) {
                     res.json(user);
-                    //if (user) {
-                    //    userModel.findById(userId)
-                    //        .then(
-                    //            function (users) {
-                    //                res.json(users);
-                    //            },
-                    //            function (err) {
-                    //                res.status(400).send(err);
-                    //            });
-                    //}
                 },
                 function (err) {
                     res.status(400).send(err);

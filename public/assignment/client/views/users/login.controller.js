@@ -12,7 +12,6 @@
                     .login(user)
                     .then(
                         function(response){
-                            console.log(response.data);
                             $rootScope.user = response.data;
                             findAllFormsForUser($rootScope.user);
                             $location.url("/profile/" + response.data._id);

@@ -1,31 +1,30 @@
 //var uuid = require('node-uuid');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+//var passport = require('passport');
+//var LocalStrategy = require('passport-local').Strategy;
 
-module.exports = function (app, userModel) {
-    passport.use('assignment', new LocalStrategy(localStrategy));
+module.exports = function (app, userModel, passport, LocalStrategy) {
+    passport.use('assignment', new LocalStrategy(
+        function (username, password, done) {
+            userModel
+                .findUserByCredentials(username, password)
+                .then(
+                    function (users) {
+                        if (!users) {
+                            return done(null, false);
+                        }
+                        return done(null, users[0]);
+                    },
+                    function (err) {
+                        if (err) {
+                            return done(err);
+                        }
+                    }
+                );
+        }));
     passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
+    //passport.deserializeUser(deserializeUser);
 
     var auth = authorized;
-
-    function localStrategy(username, password, done) {
-        userModel
-            .findUserByCredentials(username, password)
-            .then(
-                function (users) {
-                    if (!users) {
-                        return done(null, false);
-                    }
-                    return done(null, users[0]);
-                },
-                function (err) {
-                    if (err) {
-                        return done(err);
-                    }
-                }
-            );
-    }
 
     function serializeUser(user, done) {
         done(null, user);
