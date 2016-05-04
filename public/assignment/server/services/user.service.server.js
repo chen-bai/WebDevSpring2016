@@ -1,8 +1,8 @@
 //var uuid = require('node-uuid');
-//var passport = require('passport');
-//var LocalStrategy = require('passport-local').Strategy;
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-module.exports = function (app, userModel, passport, LocalStrategy) {
+module.exports = function (app, userModel) {
     passport.use('assignment', new LocalStrategy(
         function (username, password, done) {
             userModel
@@ -22,7 +22,7 @@ module.exports = function (app, userModel, passport, LocalStrategy) {
                 );
         }));
     passport.serializeUser(serializeUser);
-    //passport.deserializeUser(deserializeUser);
+    passport.deserializeUser(deserializeUser);
 
     var auth = authorized;
 
@@ -31,6 +31,7 @@ module.exports = function (app, userModel, passport, LocalStrategy) {
     }
 
     function deserializeUser(user, done) {
+        console.log(222);
         userModel
             .findById(user._id)
             .then(

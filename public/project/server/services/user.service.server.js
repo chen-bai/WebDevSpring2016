@@ -1,8 +1,8 @@
 //var uuid = require('node-uuid');
-//var passport = require('passport');
-//var LocalStrategy = require('passport-local').Strategy;
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-module.exports = function (app, userModel, passport, LocalStrategy) {
+module.exports = function (app, userModel) {
     passport.use('chance', new LocalStrategy(
         function (username, password, done) {
             userModel
@@ -23,7 +23,6 @@ module.exports = function (app, userModel, passport, LocalStrategy) {
         }));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
-
 
     function serializeUser(user, done) {
         done(null, user);
@@ -139,8 +138,17 @@ module.exports = function (app, userModel, passport, LocalStrategy) {
         var userId = req.params.id;
         userModel.update(userId, req.body)
             .then(
-                function (user) {
-                    res.json(user);
+                function (response) {
+                    if (response) {
+                        userModel.findById(userId)
+                            .then(
+                                function (user) {
+                                    res.json(user);
+                                },
+                                function (err) {
+                                    res.status(400).send(err);
+                                });
+                    }
                 },
                 function (err) {
                     res.status(400).send(err);
