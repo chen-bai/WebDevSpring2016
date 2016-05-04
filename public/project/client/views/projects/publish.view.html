@@ -6,15 +6,17 @@
                 <div class="row">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-8">
+                        <label ng-show="tips" class="btn-block form-control td-border tips-info">{{tips}}</label>
                         <div class="form-group" ng-model="project">
-                            <label ng-show="tips" class="btn-block form-control td-border tips-info">{{tips}}</label>
-                            <h3>
-                            <span class="fa-stack fa-lg">
-                                 <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
-                                 <i class="fa fa-inverse fa-stack-1x">1</i>
-                            </span>
-                                What type of work do you require?</h3>
-                            <div class="form-group" align="center">
+                            <div class="form-group col-sm-12">
+                                <h3>
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
+                                        <i class="fa fa-inverse fa-stack-1x">1</i>
+                                    </span>
+                                    What type of work do you require?</h3>
+                            </div>
+                            <div class="form-group col-sm-12" align="center">
                                 <select ng-model="project.type" ng-value="project.type" class="form-control">
                                     <option value="Websites IT & Software">
                                         Websites IT &amp; Software
@@ -48,13 +50,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <h3>
-                            <span class="fa-stack fa-lg">
-                                 <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
-                                 <i class="fa fa-inverse fa-stack-1x">2</i>
-                            </span>
-                                What is your project about?</h3>
-                            <div class="form-group">
+                            <div class="form-group col-sm-12">
+                                <h3>
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
+                                        <i class="fa fa-inverse fa-stack-1x">2</i>
+                                    </span>
+                                    What is your project about?</h3>
+                            </div>
+                            <div class="form-group col-sm-12">
                                 <label class="txt-normal">PROJECT TITLE:</label>
                                 <input class="form-control" ng-model="project.title" ng-value="project.title"
                                        placeholder="e.g. Build a website">
@@ -63,13 +67,15 @@
                         </div>
 
                         <div class="form-group">
-                            <h3>
-                            <span class="fa-stack fa-lg">
-                                 <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
-                                 <i class="fa fa-inverse fa-stack-1x">3</i>
-                            </span>
-                                Tell us more about your project.</h3>
-                            <div class="form-group">
+                            <div class="form-group col-sm-12">
+                                <h3>
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
+                                        <i class="fa fa-inverse fa-stack-1x">3</i>
+                                    </span>
+                                    Tell us more about your project.</h3>
+                            </div>
+                            <div class="form-group col-sm-12">
                                 <label class="txt-normal">WHAT SKILLS ARE REQUIRED:</label>
                                 <input class="form-control" ng-model="project.skills" ng-value="project.skills"
                                        placeholder="e.g. Java, MySQL, PHP, ...">
@@ -83,7 +89,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="form-group">
+                            <div class="form-group col-sm-12">
                                 <h3>
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
@@ -91,7 +97,7 @@
                                     </span>
                                     What budget do you have in mind?.</h3>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-12">
                                 <label class="txt-normal">MINIMUM BUDGET(USD/hr):</label>
                                 <input class="form-control" min="2" ng-value="project.min"
                                        type="number" ng-model="project.min" ng-value="project.min">
@@ -104,7 +110,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="form-group">
+                            <div class="form-group col-sm-12">
                                 <h3>
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x fa-color-lkb"></i>
@@ -112,7 +118,7 @@
                                     </span>
                                     When do you want to process the project?</h3>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-12">
                                 <label class="txt-normal">PROJECT START FROM:</label>
                                 <input class="form-control" type="date" min="{{date | date:'yyyy-MM-dd'}}"
                                        ng-model="project.started" ng-value="project.started">
@@ -124,7 +130,7 @@
                                 <h5 ng-show="tip15" class="tips txt-left">{{tip15}}</h5>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" align="center">
                             <a type="submit" class="btn btn-info" ng-click="saveProject(project)">
                                 <span class="menu-icon">
                                 <i class="fa fa-fw fa-check"></i></span> Save Draft

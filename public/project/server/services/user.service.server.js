@@ -146,12 +146,12 @@ module.exports = function (app, userModel) {
                                     res.json(user);
                                 },
                                 function (err) {
-                                    res.status(400).send(err);
+                                    res.status(100).send(err);
                                 });
                     }
                 },
                 function (err) {
-                    res.status(400).send(err);
+                    res.status(200).send(err);
                 }
             );
     });
