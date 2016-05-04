@@ -25,8 +25,8 @@ app.use(express.static(__dirname + '/public'));
  res.send('hello world');
  });*/
 
-var connectionString = 'mongodb://localhost/FormBuilderDB';
-//var connectionString = 'mongodb://localhost/ChanceDB';
+//var connectionString = 'mongodb://localhost/FormBuilderDB';
+var connectionString = 'mongodb://localhost/ChanceDB';
 
 //var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/FormBuilderDB';
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {

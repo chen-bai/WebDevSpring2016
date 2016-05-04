@@ -9,8 +9,7 @@
             $rootScope.imageSource = 'assets/img/black%20logo.png';
             $rootScope.templateStyle = "assets/css/cover.css";
             $rootScope.signUp = signUp;
-            $rootScope.tips=null;
-            $rootScope.errorMessage = null;
+            $rootScope.tis
         }
         init();
 
@@ -54,9 +53,13 @@
                                 };
                                 UserService.registerUser(newUser)
                                     .then(function (response) {
-                                        $rootScope.user = response.data;
-                                        $rootScope.currentUser = response.data;
-                                        $location.url("/profile/" + response.data._id);
+                                        if(!response.data){
+                                            $rootScope.tips = "* This username already exists!";
+                                        }else {
+                                            $rootScope.user = response.data;
+                                            $rootScope.currentUser = response.data;
+                                            $location.url("/profile/" + response.data._id);
+                                        }
                                     });
                             }
                         }
