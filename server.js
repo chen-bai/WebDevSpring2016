@@ -25,8 +25,8 @@ app.use(express.static(__dirname + '/public'));
  res.send('hello world');
  });*/
 
-//var connectionString = 'mongodb://localhost/FormBuilderDB';
-var connectionString = 'mongodb://localhost/ChanceDB';
+var connectionString = 'mongodb://localhost/FormBuilderDB';
+//var connectionString = 'mongodb://localhost/ChanceDB';
 
 //var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/FormBuilderDB';
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
@@ -42,6 +42,7 @@ var db = mongoose.connect(connectionString);
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
+// Assignment & Project
 var assignmentUserModel = require("./public/assignment/server/models/user.model.server.js")(db, mongoose);
 var projectUserModel = require("./public/project/server/models/user.model.server.js")(db, mongoose);
 
@@ -49,7 +50,6 @@ require("./public/assignment/server/app.js")(app, db, mongoose, passport, LocalS
 
 require("./public/project/server/app.js")(app, db, mongoose, passport, LocalStrategy, projectUserModel);
 
-// Assignment & Chance
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
@@ -58,7 +58,7 @@ function serializeUser(user, done) {
 }
 
 function deserializeUser(user, done) {
-    if (user.photo) {
+    if (user.status) {
         projectUserModel
             .findById(user._id)
             .then(
