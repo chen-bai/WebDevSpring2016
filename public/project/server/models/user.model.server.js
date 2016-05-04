@@ -54,7 +54,6 @@ module.exports = function (db, mongoose) {
 
     function update(userId, user) {
         return UserModel.findOneAndUpdate({_id: userId}, {
-            _id: user._id,
             username: user.username,
             password: user.password,
             email: user.email,
