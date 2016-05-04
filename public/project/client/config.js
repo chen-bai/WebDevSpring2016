@@ -59,13 +59,13 @@
                         loggedin: checkLoggedin
                     }
                 })
-                .when("/account/:_userId", {
-                    templateUrl: "views/users/account.view.html",
-                    controller: "AccountController",
-                    resolve: {
-                        loggedin: checkLoggedin
-                    }
-                })
+                //.when("/account/:_userId", {
+                //    templateUrl: "views/users/account.view.html",
+                //    controller: "AccountController",
+                //    resolve: {
+                //        loggedin: checkLoggedin
+                //    }
+                //})
                 .when("/application/:_projectId", {
                     templateUrl: "views/projects/application.view.html",
                     controller: "ApplicationController",

@@ -6,8 +6,9 @@
                 <h1>My Projects</h1>
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#/project/{{user._id}}">My Projects</a></li>
-                    <li><a href="#/details/{{project._id}}" ng-class="linkStyle">Project Details</a></li>
-                    <li><a href="#/application/{{project._id}}"
+                    <li><a href="#/details/{{project._id}}" ng-hide="user.type==='freelancer'"
+                           ng-class="linkStyle">Project Details</a></li>
+                    <li><a href="#/application/{{project._id}}" ng-hide="user.type==='freelancer'"
                            ng-class="{'linkDisabled' : project&& project.status!='published'}">Job Applications</a></li>
                 </ul>
 
