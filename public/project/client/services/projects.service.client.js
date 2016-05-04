@@ -11,9 +11,19 @@
             deleteProjectById: deleteProjectById,
             updateProjectById: updateProjectById,
             findAllJobs: findAllJobs,
+            findAllJobsForUser: findAllJobsForUser,
+            completeJobById: completeJobById
         };
 
         return api;
+
+        function completeJobById(jobId){
+            return $http.put("/api/chance/job/"+jobId+"/complete");
+        }
+
+        function findAllJobsForUser(userId){
+            return $http.get("/api/chance/myjobs/"+userId);
+        }
 
         function findAllJobs(userId){
             return $http.get("/api/chance/jobs/"+userId);

@@ -1,6 +1,17 @@
 //var uuid = require('node-uuid');
 
 module.exports = function (app, projectModel) {
+    app.get("/api/chance/myjobs/:userId", function (req, res) {
+        var userId = req.params.userId;
+        projectModel.findMyJobs(userId)
+            .then(function (jobs) {
+                    res.json(jobs);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
+    });
+
     app.get("/api/chance/jobs/:userId", function (req, res) {
         var userId = req.params.userId;
         projectModel.findJobs(userId)
@@ -81,6 +92,17 @@ module.exports = function (app, projectModel) {
                 function (err) {
                     res.status(400).send(err);
                 });
+    });
+
+    app.put('/api/chance/job/:jobId/complete', function (req, res){
+        var jobId = req.params.jobId;
+        projectModel.completeJob(jobId, 'completed')
+            .then(function(job){
+                res.json(job)
+            },
+            function(err){
+                res.status(400).send(err);
+            })
     });
 
     app.put('/api/chance/user/:userId/project/:projectId', function (req, res) {

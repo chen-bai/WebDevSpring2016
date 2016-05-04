@@ -59,6 +59,20 @@
                         loggedin: checkLoggedin
                     }
                 })
+                .when("/job/:_userId", {
+                    templateUrl: "views/projects/jobs.view.html",
+                    controller: "JobController",
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
+                })
+                .when("/jobDetails/:_jobId", {
+                    templateUrl: "views/projects/jobDetails.view.html",
+                    controller: "JobDetailController",
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
+                })
                 //.when("/account/:_userId", {
                 //    templateUrl: "views/users/account.view.html",
                 //    controller: "AccountController",
@@ -73,9 +87,9 @@
                         loggedin: checkLoggedin
                     }
                 })
-                .when("/jobs", {
-                    templateUrl: "views/search/jobs.view.html",
-                    controller: "JobsController",
+                .when("/search", {
+                    templateUrl: "views/search/search.view.html",
+                    controller: "SearchController",
                     resolve: {
                         loggedin: checkLoggedin
                     }

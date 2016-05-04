@@ -14,10 +14,20 @@ module.exports = function (db, mongoose) {
         processById : processById,
         remove: remove,
         update: update,
-        findJobs: findJobs
+        findJobs: findJobs,
+        findMyJobs: findMyJobs,
+        completeJob: completeJob
     };
 
     return api;
+
+    function completeJob(jobId, status){
+        return ProjectModel.findOneAndUpdate({_id: jobId}, {status: status})
+    }
+
+    function findMyJobs(userId){
+        return ProjectModel.find({freelancerId: userId});
+    }
 
     function findJobs(userId){
         return ProjectModel.find({$and: [{status: "published"},{userId: {'$ne':userId}}]});

@@ -6,14 +6,17 @@
         <li ng-class="{'active' : $location.url()=='/profile/'+user._id}">
             <a href="#/profile/{{user._id}}">Profile</a>
         </li>
-        <li ng-class="{'active' : $location.url()=='/project/'+user._id}">
+        <li ng-class="{'active' : $location.url()=='/project/'+user._id}" ng-show="user.type==='employer'">
             <a href="#/project/{{user._id}}">My Projects</a>
+        </li>
+        <li ng-class="{'active' : $location.url()=='/job/'+user._id}" ng-show="user.type==='freelancer'">
+            <a href="#/job/{{user._id}}">My Jobs</a>
         </li>
         <li ng-class="{'active' : $location.url()=='/publish/'+user._id}" ng-show="user.type=='employer'">
             <a href="#/publish/{{user._id}}">Post a Project</a>
         </li>
-        <li ng-class="{'active' : $location.url()=='/jobs'}">
-            <a href="#/jobs">Find Jobs</a>
+        <li ng-class="{'active' : $location.url()=='/search'}">
+            <a href="#/search">Find Jobs</a>
         </li>
         <!--<li ng-class="{'active' : $location.url()=='/account/'+user._id}">-->
             <!--<a href="#/account/{{user._id}}">Account</a>-->

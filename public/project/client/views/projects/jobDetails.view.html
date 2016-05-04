@@ -1,0 +1,114 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="panel widget light-widget">
+        <div class="panel-heading no-title"></div>
+        <form class="form-horizontal" action="#" role="form">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3 mgbt-xs-20">
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-img text-center mgbt-xs-15"
+                                     ng-show="!employer.photo">
+                                    <img alt="example image" ng-src="{{photo}}"></div>
+                                <div class="form-img text-center mgbt-xs-15"
+                                     ng-show="employer.photo">
+                                    <img alt="example image" ng-src="{{employer.photo}}"/>
+                                </div>
+                                <br/>
+                                <p class="txt-center size-sm">
+                                    &copy;{{employer.username}}
+                                </p>
+                                <p class="txt-center size-sm">
+                                    Status
+                                    <span ng-show="employer.status==='active'"
+                                          class="label label-success">Active</span>
+                                    <span ng-show="employer.status==='offline'"
+                                          class="label label-danger">Offline</span>
+                                </p>
+                                <p class="txt-center size-sm">Member since {{employer.started | date:short}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Job Title:</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-12">
+                                        <h3>{{job.title}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Job Directory:</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-12">
+                                        <h3>{{job.type}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Skills Required:</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-12">
+                                        <h3>{{job.skills}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Job Description:</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-12">
+                                        <h3>{{job.description}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Job Start:</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-12">
+                                        <h3>{{job.started | date : short}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Job Deadline:</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-12">
+                                        <h3>{{job.deadline | date : short}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Job Rate(USD/hr):</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-12">
+                                        <h3>$ {{job.charge}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pd-20">
+                <a type="submit" class="btn btn-block vd_btn vd_bg-blue" ng-click="complete(job)">
+                    <span class="menu-icon">
+                    <i class="fa fa-fw fa-check"></i></span> Complete Job
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

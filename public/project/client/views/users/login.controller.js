@@ -24,7 +24,12 @@
                         function (response) {
                             $rootScope.user = response.data;
                             $rootScope.currentUser = response.data;
-                            findAllProjectsForUser($rootScope.user);
+                            if($rootScope.user.type==='employer') {
+                                findAllProjectsForUser($rootScope.user);
+                            }else{
+                                findAllJobsForUser($rootScope.user);
+                            }
+                            getJobs($rootScope.user);
                             $rootScope.tips = null;
                             $location.url("/profile/" + response.data._id);
                         },
@@ -35,11 +40,25 @@
             }
         }
 
+        function findAllJobsForUser(user){
+            ProjectService.findAllJobsForUser(user._id)
+                .then(function (response) {
+                    $rootScope.myJobs = response.data;
+                });
+        }
+
         function findAllProjectsForUser(user) {
             ProjectService.findAllProjectsForUser(user._id)
                 .then(function (response) {
                     $rootScope.projects = response.data;
                 });
+        }
+
+        function getJobs(user) {
+            ProjectService.findAllJobs(user._id)
+                .then(function (response) {
+                    $rootScope.jobs = response.data;
+                })
         }
     }
 })();

@@ -9,7 +9,7 @@
             $rootScope.imageSource = 'assets/img/black%20logo.png';
             $rootScope.templateStyle = "assets/css/cover.css";
             $rootScope.signUp = signUp;
-            $rootScope.tis
+            $rootScope.tips = null;
         }
         init();
 

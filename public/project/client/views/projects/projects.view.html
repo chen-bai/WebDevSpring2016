@@ -6,9 +6,9 @@
                 <h1>My Projects</h1>
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#/project/{{user._id}}">My Projects</a></li>
-                    <li><a href="#/details/{{project._id}}" ng-hide="user.type==='freelancer'"
+                    <li><a href="#/details/{{project._id}}"
                            ng-class="linkStyle">Project Details</a></li>
-                    <li><a href="#/application/{{project._id}}" ng-hide="user.type==='freelancer'"
+                    <li><a href="#/application/{{project._id}}"
                            ng-class="{'linkDisabled' : project&& project.status!='published'}">Job Applications</a></li>
                 </ul>
 
@@ -58,7 +58,7 @@
                                     <span class="label label-success"
                                           ng-show="project.status=='completed'">Completed</span>
                                     <span class="label label-default"
-                                          ng-show="project.status=='cancelled'">Cancelled</span>
+                                          ng-show="project.status=='failed'">Failed</span>
                                 </td>
                                 <td align="center">
                                     <input class="form-control" type="date" min="{{date | date:'yyyy-MM-dd'}}"
@@ -91,7 +91,7 @@
                                         <span class="label label-primary" ng-show="currentProject.status=='published'">Published</span>
                                         <span class="label label-info" ng-show="currentProject.status=='processing'">Processing</span>
                                         <span class="label label-success" ng-show="currentProject.status=='completed'">Completed</span>
-                                        <span class="label label-default" ng-show="currentProject.status=='cancelled'">Cancelled</span>
+                                        <span class="label label-default" ng-show="currentProject.status=='failed'">Failed</span>
                                     </a>
                                 </td>
                                 <td align="center">

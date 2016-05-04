@@ -5,9 +5,8 @@
             <div class="panel-body">
                 <h1>My Projects</h1>
                 <ul class="nav nav-tabs">
-                    <li><a href="#/project/{{user._id}}">My Projects</a></li>
-                    <li><a href="#/details/{{project._id}}">Project Details</a></li>
-                    <li class="active"><a href="#/application/{{project._id}}">Job Applications</a></li>
+                    <li class="active"><a href="#/job/{{user._id}}">My Jobs</a></li>
+                    <li><a href="#/jobDetails/{{job._id}}" ng-class="linkStyle">Job Details</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -15,25 +14,25 @@
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr class="info">
-                                <th class="txt-center">
-                                    Photo
+                                <th class="txt-center" ng-click="sort('title', titleOrder)">
+                        <span class="menu-icon">
+                            <i ng-class="{'fa fa-unsorted': titleOrder==0, 'fa fa-sort-asc':titleOrder==1,
+                            'fa fa-sort-desc':titleOrder==-1}"></i> Job Title</span>
                                 </th>
-                                <th class="txt-center" ng-click="sort('name', nameOrder)">
-                                    <span class="menu-icon">
-                                    <i ng-class="{'fa fa-unsorted': nameOrder==0, 'fa fa-sort-asc':nameOrder==1,
-                                    'fa fa-sort-desc':nameOrder==-1}"></i> Username</span>
+                                <th class="txt-center">
+                                    Job Status
                                 </th>
                                 <th class="txt-center" ng-click="sort('started', startedOrder)">
                                      <span class="menu-icon">
                                          <i ng-class="{'fa fa-unsorted': startedOrder==0,
                                          'fa fa-sort-asc':startedOrder==1,
-                                         'fa fa-sort-desc':startedOrder==-1}"></i> Member since</span>
+                                         'fa fa-sort-desc':startedOrder==-1}"></i> Started</span>
                                 </th>
-                                <th class="txt-center" ng-click="sort('charge', chargeOrder)">
+                                <th class="txt-center" ng-click="sort('deadline', deadlineOrder)">
                                     <span class="menu-icon">
-                                        <i ng-class="{'fa fa-unsorted': chargeOrder==0,
-                                        'fa fa-sort-asc':chargeOrder==1,
-                                        'fa fa-sort-desc':chargeOrder==-1}"></i> Charge(USD/hr)</span>
+                                        <i ng-class="{'fa fa-unsorted': deadlineOrder==0,
+                                        'fa fa-sort-asc':deadlineOrder==1,
+                                        'fa fa-sort-desc':deadlineOrder==-1}"></i> Deadline</span>
                                 </th>
                                 <th class="txt-center">
                                     Action
@@ -41,28 +40,30 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="currentApp in project.applications">
+                            <tr ng-repeat="currentJob in myJobs">
+                                <td>
+                                    <a class="rm-ul">{{currentJob.title}}</a>
+                                </td>
                                 <td align="center">
                                     <a class="rm-ul">
-                                        <img ng-hide="currentApp.photo" alt="example image"
-                                             class="img-sm" ng-src="{{photo}}">
-                                        <img ng-show="currentApp.photo" alt="example image"
-                                             class="img-sm" ng-src="{{currentApp.photo}}">
+                                        <span class="label label-info"
+                                              ng-show="currentJob.status=='processing'">Processing</span>
+                                        <span class="label label-success"
+                                              ng-show="currentJob.status=='completed'">Completed</span>
+                                        <span class="label label-default"
+                                              ng-show="currentJob.status=='failed'">Failed</span>
                                     </a>
                                 </td>
                                 <td align="center">
-                                    <a class="rm-ul">{{currentApp.username}}</a>
+                                    <a class="rm-ul">{{currentJob.started | date: short}}</a>
                                 </td>
                                 <td align="center">
-                                    <a class="rm-ul">{{currentApp.started | date: short}}</a>
-                                </td>
-                                <td align="center">
-                                    <a class="rm-ul">{{currentApp.charge}}</a>
+                                    <a class="rm-ul">{{currentJob.deadline | date: short}}</a>
                                 </td>
                                 <td align="center">
                                     <a class="rm-background">
-                                        <i class="fa fa-check fa-2x" ng-click="accept($index)"
-                                           title="Accept Project" aria-label="Accept"></i>
+                                        <i class="fa fa-pencil-square fa-3x" ng-click="viewJob($index)"
+                                           title="View Job" aria-label="View"></i>
                                     </a>
                                 </td>
                             </tr>

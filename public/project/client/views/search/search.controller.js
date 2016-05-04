@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("ChanceApp")
-        .controller("JobsController", JobsController);
+        .controller("SearchController", SearchController);
 
-    function JobsController($rootScope, $location, ProjectService) {
+    function SearchController($rootScope, $location, ProjectService) {
         function init() {
             $rootScope.txtColor = '#555555';
             $rootScope.imageSource = 'assets/img/black%20logo.png';
@@ -23,19 +23,42 @@
         init();
 
         $rootScope.apply = apply;
+        $rootScope.getJobDetails = getJobDetails;
+
+        function getJobDetails(job){
+
+        }
 
         function apply(job) {
-            if ($rootScope.user.charge > job.max) {
-                $rootScope.tip26 = "* Your charge is too high!";
-                $rootScope.tip25 = null;
-            } else {
-                job.applications.push($rootScope.user);
-                $rootScope.tips = null;
-                ProjectService.updateProjectById(job.userId, job._id, job)
-                    .then(function (response) {
-                        $rootScope.tip25 = "* Your application has been sent successfully!";
-                        $rootScope.tip26 = null;
-                    })
+            for(var i in job.applications){
+                if(job.applications[i]._id == $rootScope.user._id){
+                    $rootScope.tip26 = "* You have already applied for this job.";
+                    $rootScope.tip25 = null;
+                }
+            }
+            if(!$rootScope.tip26) {
+                if ($rootScope.user.type == 'freelancer') {
+                    if ($rootScope.user.charge) {
+                        if ($rootScope.user.charge > job.max) {
+                            $rootScope.tip26 = "* Your charge is too high!";
+                            $rootScope.tip25 = null;
+                        } else {
+                            job.applications.push($rootScope.user);
+                            $rootScope.tips = null;
+                            ProjectService.updateProjectById(job.userId, job._id, job)
+                                .then(function (response) {
+                                    $rootScope.tip25 = "* Your application has been sent successfully!";
+                                    $rootScope.tip26 = null;
+                                })
+                        }
+                    } else {
+                        $rootScope.tip26 = "* Please enter your charge first!";
+                        $rootScope.tip25 = null;
+                    }
+                } else {
+                    $rootScope.tip26 = "* You cannot apply for a job as a employer!";
+                    $rootScope.tip25 = null;
+                }
             }
         }
 

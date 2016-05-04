@@ -19,7 +19,7 @@
         $rootScope.sort = sort;
 
         function accept(index){
-            $rootScope.project.freelancerId = $rootScope.project.applications[index].userId;
+            $rootScope.project.freelancerId = $rootScope.project.applications[index]._id;
             $rootScope.project.status = 'processing';
             ProjectService.updateProjectById($rootScope.user._id, $rootScope.project._id, $rootScope.project)
                 .then(function(response){
@@ -37,7 +37,7 @@
                         started: new Date(response.data.started),
                         deadline: new Date(response.data.deadline),
                         applications: response.data.applications
-                    }
+                    };
                     $location.url("/project/"+$rootScope.user._id);
                 })
         }

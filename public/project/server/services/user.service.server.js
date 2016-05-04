@@ -90,8 +90,8 @@ module.exports = function (app, userModel, passport, LocalStrategy) {
         var index = req.params.id;
         userModel.findById(index)
             .then(
-                function (users) {
-                    res.json(users[0]);
+                function (user) {
+                    res.json(user);
                 },
                 function (err) {
                     res.status(400).send(err);

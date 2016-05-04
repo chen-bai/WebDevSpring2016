@@ -21,7 +21,7 @@
                     <a href="#/login">Login</a>
                 </li>
                 <li ng-show="user">
-                    <a href="#/jobs">Find Projects</a>
+                    <a href="#/search">Find Jobs</a>
                 </li>
                 <li ng-show="user" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">{{user.username}}
@@ -29,7 +29,12 @@
                     <ul class="dropdown-menu">
                         <li><a href="#/portfolio/{{user._id}}">Portfolio</a></li>
                         <li><a href="#/profile/{{user._id}}">Profile</a></li>
-                        <li><a href="#/project/{{user._id}}">My Projects</a></li>
+                        <li ng-show="user.type==='employer'">
+                            <a href="#/project/{{user._id}}">My Projects</a>
+                        </li>
+                        <li ng-show="user.type==='freelancer'">
+                            <a href="#/job/{{user._id}}">My Jobs</a>
+                        </li>
                         <!--<li><a href="#/account/{{user._id}}">Account</a></li>-->
                     </ul>
                 </li>

@@ -117,27 +117,6 @@
             $rootScope.linkStyle = "";
         }
 
-        //function addProject(project) {
-        //    var newProject = {
-        //        userId: userId,
-        //        freelancerId: null,
-        //        title: project.title,
-        //        type: null,
-        //        description: null,
-        //        skills: null,
-        //        min: null,
-        //        max: null,
-        //        status: 'editing',
-        //        started: project.started,
-        //        deadline: project.deadline
-        //    };
-        //    ProjectService.createProjectForUser(userId, newProject)
-        //        .then(function (response) {
-        //            $rootScope.projects = response.data;
-        //            $rootScope.project = {};
-        //        });
-        //}
-
         function updateProject(project) {
             if (selectedProjectIndex >= 0 && project.status == 'editing') {
                 if(project.started >= project.deadline){

@@ -28,7 +28,7 @@
         }
 
         function findUserById(userId) {
-            return $http.get("/api/chance/user/username/" + userId);
+            return $http.get("/api/chance/user/" + userId);
         }
 
         function findUserByUsername(username) {

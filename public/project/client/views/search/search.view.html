@@ -50,7 +50,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat="job in jobs">
+                                    <tr ng-click="getJobDetails(job)" ng-repeat="job in jobs">
                                         <td>{{job.title}}</td>
                                         <td>{{job.type}}</td>
                                         <td class="txt-center">{{job.started | date : short}}</td>
@@ -58,15 +58,11 @@
                                         <td class="txt-center">${{job.min}}</td>
                                         <td class="txt-center">${{job.max}}</td>
                                         <td class="menu-action txt-center">
-                                            <!--<a data-original-title="view" data-toggle="tooltip"-->
-                                                                   <!--data-placement="top"-->
-                                                                   <!--class="btn menu-icon vd_bd-green vd_green"> <i-->
-                                                <!--class="fa fa-eye"></i> </a>-->
                                             <a data-original-title="apply"
-                                               data-toggle="tooltip"
+                                               data-toggle="tooltip" ng-hide="job.freelancerId=='user._id'"
                                                data-placement="top" ng-click="apply(job)"
                                                class="btn menu-icon vd_bd-yellow vd_yellow">
-                                            <i class="fa fa-check"></i> </a>
+                                            <i class="fa fa-check"></i></a>
                                         </td>
                                     </tr>
                                     </tbody>
