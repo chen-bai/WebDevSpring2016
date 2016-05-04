@@ -52,12 +52,12 @@ var projectModel = require("./public/project/server/models/project.model.server.
 require("./public/project/server/services/user.service.server.js")(app, chancerModel, passport, LocalStrategy);
 require("./public/project/server/services/project.service.server.js")(app, projectModel);
 
-var userModel = require("./public/assignment/server/models/user.model.server.js")(db, mongoose);
-var formModel = require("./public/assignment/server/models/form.model.server.js")(db, mongoose);
-
-require("./public/assignment/server/services/user.service.server.js")(app, userModel, passport, LocalStrategy);
-require("./public/assignment/server/services/form.service.server.js")(app, formModel);
-require("./public/assignment/server/services/field.service.server.js")(app, formModel);
+//var userModel = require("./public/assignment/server/models/user.model.server.js")(db, mongoose);
+//var formModel = require("./public/assignment/server/models/form.model.server.js")(db, mongoose);
+//
+//require("./public/assignment/server/services/user.service.server.js")(app, userModel, passport, LocalStrategy);
+//require("./public/assignment/server/services/form.service.server.js")(app, formModel);
+//require("./public/assignment/server/services/field.service.server.js")(app, formModel);
 
 
 app.listen(port, ipaddress);
